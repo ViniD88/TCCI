@@ -78,21 +78,38 @@ public class Movimento : MonoBehaviour
 
 
 
+
         //rotacionar o personagem
+
+        Coletar script = GetComponent<Coletar>();
+        bool objetoColetado = script.objetoColetado;
 
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(0f, -rotationSpeed, 0f);
 
-            //verifica se o personagem está se movendo. Aplica a rotação apenas se o personagem está parado
+            //verifica se o personagem está se movendo. Aplica a rotação para a ESQUERDA apenas se o personagem está parado
             if (Input.GetAxis("Vertical") == 0) {
-                animator.SetBool("isTurningLeft", true);
-                animator.SetBool("isWalking", false);
+                if (objetoColetado)
+                {
+                    animator.SetBool("isCarryingLeft", true);
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isTurningLeft", false);
+                }
+                else
+                {
+                    animator.SetBool("isTurningLeft", true);
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isCarryingLeft", false);
+                }
+
             }
+
         }
         else
         {
             animator.SetBool("isTurningLeft", false);
+            animator.SetBool("isCarryingLeft", false);
         }
 
 
@@ -100,18 +117,31 @@ public class Movimento : MonoBehaviour
         {
             transform.Rotate(0f, rotationSpeed, 0f);
 
-            //verifica se o personagem está se movendo. Aplica a rotação apenas se o personagem está parado
+            //verifica se o personagem está se movendo. Aplica a rotação para a DIREITA apenas se o personagem está parado
             if (Input.GetAxis("Vertical") == 0)
             {
-                animator.SetBool("isTurningRight", true);
-                animator.SetBool("isWalking", false);
+                if (objetoColetado)
+                {
+                    animator.SetBool("isCarryingRight", true);
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isTurningRight", false);
+                }
+                else
+                {
+                    animator.SetBool("isTurningRight", true);
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isCarryingRight", false);
+                }
+
             }
         }
         else
         {
             animator.SetBool("isTurningRight", false);
+            animator.SetBool("isCarryingRight", false);
         }
 
+        //animação para pulo
 
         if (isGrounded)
         {

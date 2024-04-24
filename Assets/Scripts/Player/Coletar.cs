@@ -6,7 +6,7 @@ public class Coletar : MonoBehaviour
 {
     private Transform personagem;
     private GameObject objetoColetavel;
-    private bool objetoColetado = false;
+    public bool objetoColetado = false;
     private Rigidbody objetoRigidbody; // Armazenar o Rigidbody do objeto coletável
     private Quaternion rotacaoRelativa; // Armazenar a rotação relativa entre o objeto coletável e o personagem
     private Animator animator;
@@ -22,9 +22,8 @@ public class Coletar : MonoBehaviour
     void Update()
     {
 
-        Movimento isgrounded = GetComponent<Movimento>();
-        bool isGrounded = isgrounded.isGrounded;
-
+        Movimento script = GetComponent<Movimento>();
+        bool isGrounded = script.isGrounded;
 
         // Verificar se a tecla E foi pressionada
         if (Input.GetKeyDown(KeyCode.E))
