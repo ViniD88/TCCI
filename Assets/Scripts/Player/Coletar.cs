@@ -8,81 +8,86 @@ public class Coletar : MonoBehaviour
     private GameObject objetoColetavel;
     public bool objetoColetado = false;
     private Rigidbody objetoRigidbody; // Armazenar o Rigidbody do objeto coletável
+    private Collider objetoCollider; // Armazenar o Collider do objeto coletável
     private Quaternion rotacaoRelativa; // Armazenar a rotação relativa entre o objeto coletável e o personagem
     private Animator animator;
     public bool isGrounded;
+    public bool coleta;
+    public GameObject player;
+    public LayerMask layerColetaveis;
+    private bool ignorarColisão = false;
 
     void Start()
     {
         // Encontrar o personagem pela tag "Player"
-        personagem = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        personagem = player.transform;
         animator = GetComponent<Animator>();
+        coleta = false;
     }
 
     void Update()
     {
+        isGrounded = player.GetComponent<Movimento>().isGrounded;
 
-        Movimento script = GetComponent<Movimento>();
-        bool isGrounded = script.isGrounded;
-
-        // Verificar se a tecla E foi pressionada
-        if (Input.GetKeyDown(KeyCode.E))
+        // Verificar se a tecla Q foi pressionada para coletar algum objeto coletável
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             // Se o objeto estiver coletado, soltá-lo
             if (objetoColetado)
             {
                 SoltarObjeto();
-                animator.SetBool("isCarrying", false);
-                animator.SetBool("isIdle", true);
-
             }
             // Se não, coletar o objeto
             else
             {
                 ColetarObjeto();
-                animator.SetBool("isCarrying", true);
-                animator.SetBool("isIdle", false);
-                animator.SetBool("isWalking", false);
             }
         }
+    }
+
+
+    void FixedUpdate()
+    {
 
         // Se o objeto estiver coletado, atualizar sua posição e orientação para acompanhar o personagem
         if (objetoColetado && objetoColetavel != null)
         {
-            AtualizarPosicaoEOrientacaoObjeto();
+            // Atualizar a posição do objeto coletável para acompanhar o personagem
+            Vector3 novaPosicao = personagem.position + personagem.forward * 1f + Vector3.up; // Ajuste conforme necessário
+            objetoColetavel.transform.position = novaPosicao;
+
+            // Aplicar a rotação relativa para manter a orientação do objeto em relação ao personagem
+            objetoColetavel.transform.rotation = personagem.rotation * rotacaoRelativa;
         }
 
-        if (Input.GetAxis("Vertical")!=0 && isGrounded)
-        {
-
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                animator.SetBool("isCarryingRunning", true);
-                animator.SetBool("isCarryingWalking", false);
-
-            }
-            else
-            {
-                animator.SetBool("isCarryingWalking", true);
-                animator.SetBool("isCarryingRunning", false);
-                
-            }
-        }
-        else
-        {
-            animator.SetBool("isCarryingWalking", false);
-            animator.SetBool("isCarryingRunning", false);
-            
-        }
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        // Verificar se o objeto possui a tag "Coletavel"
-        if (other.CompareTag("Coletavel"))
+    { 
+
+        if (!ignorarColisão)
         {
-            // Guardar uma referência para o objeto coletável
-            objetoColetavel = other.gameObject;
+            // Verificar se o objeto está na layer "Coletáveis"
+            if (layerColetaveis == (layerColetaveis | (1 << other.gameObject.layer)))
+            {
+                // Guardar uma referência para o objeto coletável
+                objetoColetavel = other.gameObject;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (!ignorarColisão)
+        {
+            // Verificar se o objeto está na layer "Coletáveis"
+            if (layerColetaveis == (layerColetaveis | (1 << other.gameObject.layer)))
+            {
+                // Guardar uma referência para o objeto coletável
+                objetoColetavel = null;
+            }
         }
     }
 
@@ -92,48 +97,54 @@ public class Coletar : MonoBehaviour
         {
             // Guardar o componente Rigidbody antes de desativá-lo
             objetoRigidbody = objetoColetavel.GetComponent<Rigidbody>();
+            objetoCollider = objetoColetavel.GetComponent<Collider>();
 
             // Desativar o Rigidbody temporariamente
             objetoRigidbody.isKinematic = true;
+            objetoCollider.enabled = false;
 
             // Armazenar a rotação relativa entre o objeto coletável e o personagem
             rotacaoRelativa = Quaternion.Inverse(personagem.rotation) * objetoColetavel.transform.rotation;
 
             // Posicionar o objeto coletável à frente e ligeiramente acima do personagem
-            PosicionarObjetoAFrente();
+
+            // Definir a posição do objeto coletável à frente e ligeiramente acima do personagem
+            Vector3 novaPosicao = personagem.position + personagem.forward * 1f + Vector3.up; // Ajuste a altura conforme necessário
+            objetoColetavel.transform.position = novaPosicao;
+
+            // Aplicar a rotação relativa para manter a orientação do objeto em relação ao personagem
+            objetoColetavel.transform.rotation = personagem.rotation * rotacaoRelativa;
 
             // Marcar o objeto como coletado
             objetoColetado = true;
+            // Ignorar a detetecção de colisão
+            ignorarColisão = true;
+
+            //animação quando carregando objeto
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isCarrying", true);
+            
+            
+
         }
     }
 
     private void SoltarObjeto()
     {
-        // Restaurar o Rigidbody do objeto coletável
+        // Restaurar o Rigidbody  e colisor do objeto coletável
         objetoRigidbody.isKinematic = false;
+        objetoCollider.enabled = true;
 
         // Resetar o estado do objeto coletável
         objetoColetavel = null;
         objetoColetado = false;
+        // Retomar a detetecção de colisão
+        ignorarColisão = false;
+
+        // animação retorna ao padrão quando solta objeto
+        animator.SetBool("isCarrying", false);
+        animator.SetBool("isIdle", true);
     }
 
-    private void PosicionarObjetoAFrente()
-    {
-        // Definir a posição do objeto coletável à frente e ligeiramente acima do personagem
-        Vector3 novaPosicao = personagem.position + personagem.forward * 1f + Vector3.up; // Ajuste a altura conforme necessário
-        objetoColetavel.transform.position = novaPosicao;
-
-        // Aplicar a rotação relativa para manter a orientação do objeto em relação ao personagem
-        objetoColetavel.transform.rotation = personagem.rotation * rotacaoRelativa;
-    }
-
-    private void AtualizarPosicaoEOrientacaoObjeto()
-    {
-        // Atualizar a posição do objeto coletável para acompanhar o personagem
-        Vector3 novaPosicao = personagem.position + personagem.forward * 1f + Vector3.up; // Ajuste conforme necessário
-        objetoColetavel.transform.position = novaPosicao;
-
-        // Aplicar a rotação relativa para manter a orientação do objeto em relação ao personagem
-        objetoColetavel.transform.rotation = personagem.rotation * rotacaoRelativa;
-    }
 }

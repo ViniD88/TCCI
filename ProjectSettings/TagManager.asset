@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coletavel
+  - NPC1
+  - Q1
+  - Pedra_1
   layers:
   - Default
   - TransparentFX
@@ -12,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Coletaveis
   - 
   - 
   - 

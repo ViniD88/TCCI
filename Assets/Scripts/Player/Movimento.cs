@@ -12,6 +12,7 @@ public class Movimento : MonoBehaviour
     private Animator animator;
     private Vector3 direcaoAnterior;
     public Vector3 direcaoAtual;
+    public bool objetoColetado;
 
     void Start()
     {
@@ -25,7 +26,8 @@ public class Movimento : MonoBehaviour
         // Verifica se o personagem está no chão
         isGrounded = Physics.Raycast(transform.position, Vector3.down, .5f);
 
-
+        Coletar script = GetComponent<Coletar>();
+        objetoColetado = script.objetoColetado;
 
         // pulo + animação de pulo
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -74,10 +76,6 @@ public class Movimento : MonoBehaviour
             Vector3 movimento = moveSpeed * Time.deltaTime * new Vector3(0, 0.0f, movimentoVertical);
             transform.Translate(movimento);
         }
-
-
-
-
 
         //rotacionar o personagem
 
@@ -148,8 +146,6 @@ public class Movimento : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
 
-
-
         Animação();
     }
 
@@ -162,25 +158,38 @@ public class Movimento : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isTurningRight", false);
-                animator.SetBool("isTurningLeft", false);
+                if (!objetoColetado)
+                {
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isTurningRight", false);
+                    animator.SetBool("isTurningLeft", false);
+                    animator.SetBool("isRunning", true);
+                }
+                else
+                {
+                    animator.SetBool("isCarryingWalking", false);
+                    animator.SetBool("isRunning", false);
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isCarryingRunning", true);
+                }
             }
             else
             {
-                if (movimento > 0)
+                if (movimento > 0 && !objetoColetado)
                 {
                     animator.SetBool("isWalking", true);
                     animator.SetBool("isWalkingBack", false);
-
                 }
-                else if (movimento < 0)
+                else if (movimento < 0 && !objetoColetado)
                 {
-                    animator.SetBool("isWalkingBack", true);
                     animator.SetBool("isWalking", false);
+                    animator.SetBool("isWalkingBack", true);
                 }
-
+                else if (movimento > 0 && objetoColetado)
+                {
+                    animator.SetBool("isCarryingWalking", true);
+                    animator.SetBool("isCarryingRunning", false);
+                }
             }
         }
         else
@@ -188,8 +197,10 @@ public class Movimento : MonoBehaviour
             animator.SetBool("isWalking", false);
             animator.SetBool("isRunning", false);
             animator.SetBool("isWalkingBack", false);
-        }
+            animator.SetBool("isCarryingWalking", false);
+            animator.SetBool("isCarryingRunning", false);
 
+        }
     }
 
 }
