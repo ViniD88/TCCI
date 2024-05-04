@@ -8,6 +8,9 @@ TagManager:
   - NPC1
   - Q1
   - Pedra_1
+  - NPC2
+  - Q2
+  - Collider1
   layers:
   - Default
   - TransparentFX
