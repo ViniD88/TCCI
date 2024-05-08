@@ -12,20 +12,23 @@ public class RespostasAdição : MonoBehaviour
     public TMP_InputField res2;
     public GameObject excl1, excl2, excl3, excl4, excl5;
     public TMP_Text r2text;
+    private bool r1ok, r2ok, r3ok, r4ok, r5ok;
 
     void Start()
     {
         r1.enabled = false;
-        r2.enabled = false;   
-        npc1_animator = GameObject.FindGameObjectWithTag("NPC1").GetComponent<Animator>();
-        npc2_animator = GameObject.FindGameObjectWithTag("NPC2").GetComponent<Animator>();
-        meuColisor1 = GameObject.FindGameObjectWithTag("Collider1").GetComponent<Collider>();
+        r1ok = false;
+        r2.enabled = false;
+        r2ok = false;
+        r3.enabled = false;
+        r3ok = false;
+
     }
 
     void Update()
     {
+        if (!r1ok) { R1(); }
         
-        R1();
 
     }
 
@@ -49,7 +52,8 @@ public class RespostasAdição : MonoBehaviour
             r1.enabled = true;
             npc1_animator.SetBool("NPC1_right", true);
             q1.gameObject.SetActive(false);
-            excl1.gameObject.SetActive(false);  
+            excl1.gameObject.SetActive(false); 
+            r1ok = true;
         }
 
     }
@@ -61,6 +65,7 @@ public class RespostasAdição : MonoBehaviour
             npc2_animator.SetBool("NPC1_right", true);
             q2.gameObject.SetActive(false);
             excl2.gameObject.SetActive(false);
+            r2ok = true;
         }
         else
         {

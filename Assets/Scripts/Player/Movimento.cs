@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using UnityEngine;
 
 public class Movimento : MonoBehaviour
@@ -12,7 +13,8 @@ public class Movimento : MonoBehaviour
     private Animator animator;
     private Vector3 direcaoAnterior;
     public Vector3 direcaoAtual;
-    public bool objetoColetado;
+    public bool objetoColetado, isInterior;
+
 
     void Start()
     {
@@ -200,6 +202,26 @@ public class Movimento : MonoBehaviour
             animator.SetBool("isCarryingWalking", false);
             animator.SetBool("isCarryingRunning", false);
 
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // verifica se o personagem está dentro de algum lugar
+        if (other.CompareTag("interior"))
+        {
+            isInterior = true;
+        }
+
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        // verifica se o personagem está dentro de algum lugar
+        if (other.CompareTag("interior"))
+        {
+            isInterior = false;
         }
     }
 

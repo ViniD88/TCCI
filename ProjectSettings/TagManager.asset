@@ -11,6 +11,7 @@ TagManager:
   - NPC2
   - Q2
   - Collider1
+  - interior
   layers:
   - Default
   - TransparentFX

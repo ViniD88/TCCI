@@ -14,6 +14,7 @@ public class CloseCanvas : MonoBehaviour
     {
          // Desativa o Canvas
         canvas.enabled = false;
+        Debug.Log("Clicou");
     }
 
     public void verificarR2_click()

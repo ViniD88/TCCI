@@ -9,9 +9,18 @@ public class CameraMoviment : MonoBehaviour
     public float distance = 5.0f;
     public float altura = 2.0f;
     public float suavizacao = 5.0f;
+    public Movimento movimentoScript;
+
+    private void Start()
+    {
+        movimentoScript = alvo.GetComponent<Movimento>();
+    }
 
     void Update()
     {
+        if (movimentoScript.isInterior == true) { distance = 2.0f; altura = 3.0f; }
+        else { distance = 5.0f; altura = 2.0f; }
+        
         // Verifica se a referência ao jogador não é nula
         if (alvo!= null)
         {
@@ -25,5 +34,7 @@ public class CameraMoviment : MonoBehaviour
             transform.LookAt(alvo.position);
         }
     }
+
+
 
 }
