@@ -14,12 +14,24 @@ public class CloseCanvas : MonoBehaviour
     {
          // Desativa o Canvas
         canvas.enabled = false;
-        Debug.Log("Clicou");
+
     }
 
     public void verificarR2_click()
     {
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
         respostasAdição.R2();
+    }
+
+    public void verificarR3_click()
+    {
+        respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
+        respostasAdição.R3();
+    }
+
+    public void verificarR4_click()
+    {
+        respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
+        respostasAdição.R4();
     }
 }

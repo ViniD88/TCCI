@@ -8,10 +8,10 @@ public class RespostasAdição : MonoBehaviour
 {
     public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
     public Collider meuColisor1;
-    public Animator npc1_animator, npc2_animator;
-    public TMP_InputField res2;
+    public Animator npc1_animator, npc2_animator, npc3_animator, npc4_animator;
+    public TMP_InputField res2, res3, res4, res5;
     public GameObject excl1, excl2, excl3, excl4, excl5;
-    public TMP_Text r2text;
+    public TMP_Text r2text, r3text, r4text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
 
     void Start()
@@ -22,13 +22,14 @@ public class RespostasAdição : MonoBehaviour
         r2ok = false;
         r3.enabled = false;
         r3ok = false;
+        r4.enabled = false;
+        r4ok = false;
 
     }
 
     void Update()
     {
-        if (!r1ok) { R1(); }
-        
+        if (!r1ok) { R1(); }   
 
     }
 
@@ -72,6 +73,43 @@ public class RespostasAdição : MonoBehaviour
             r2text.text =  "Uhmm...acho que não é esse valor";
             r2.enabled = true;
         }
+    }
+
+    public void R3() {
+        if (res3.text == "13")
+        {
+            r3text.text = "Claro, 13 litros no total!";
+            r3.enabled = true;
+            npc3_animator.SetBool("NPC3_right", true);
+            q3.gameObject.SetActive(false);
+            excl3.gameObject.SetActive(false);
+            r3ok = true;
+        }
+        else
+        {
+            r3text.text = "Tem certeza? Me parece que não é essa quantidade...";
+            r3.enabled = true;
+        }
+
+    }
+
+    public void R4()
+    {
+        if (res4.text == "15")
+        {
+            r4text.text = "Que ótimo! É justamente a quantia que preciso";
+            r4.enabled = true;
+            npc4_animator.SetBool("NPC3_right", true);
+            q4.gameObject.SetActive(false);
+            excl4.gameObject.SetActive(false);
+            r4ok = true;
+        }
+        else
+        {
+            r4text.text = "Não está certo...";
+            r4.enabled = true;
+        }
+
     }
 
 

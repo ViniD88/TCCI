@@ -53,8 +53,6 @@ public class Movimento : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
 
-
-
     }
 
     void FixedUpdate()
@@ -214,7 +212,6 @@ public class Movimento : MonoBehaviour
         }
 
     }
-
 
     private void OnTriggerExit(Collider other)
     {
