@@ -13,6 +13,7 @@ public class QuestõesAdição : MonoBehaviour
         Q2.enabled = false;
         Q3.enabled = false;
         Q4.enabled = false;
+        Q5.enabled = false;
     }
 
     void Update()
@@ -37,35 +38,23 @@ public class QuestõesAdição : MonoBehaviour
             {
                 Q4.enabled = !Q4.enabled;
             }
+
+            if (npc5 == true)
+            {
+                Q5.enabled = !Q5.enabled;
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("NPC1"))
-        {
-            npc1 = true;
+        if (other.CompareTag("NPC1")) { npc1 = true; }
+        if (other.CompareTag("NPC2")) { npc2 = true; }
+        if (other.CompareTag("NPC3")) { npc3 = true; }
+        if (other.CompareTag("NPC4")) { npc4 = true; }
+        if (other.CompareTag("NPC5")) { npc5 = true; }
 
-        }
-
-        if (other.CompareTag("NPC2"))
-        {
-            npc2 = true;
-
-        }
-
-        if (other.CompareTag("NPC3"))
-        {
-            npc3 = true;
-
-        }
-
-        if (other.CompareTag("NPC4"))
-        {
-            npc4 = true;
-
-        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -96,6 +85,13 @@ public class QuestõesAdição : MonoBehaviour
         {
             npc4 = false;
             Q4.enabled = false;
+
+        }
+
+        if (other.CompareTag("NPC5"))
+        {
+            npc5 = false;
+            Q5.enabled = false;
 
         }
     }

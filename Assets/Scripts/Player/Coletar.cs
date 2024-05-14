@@ -16,6 +16,7 @@ public class Coletar : MonoBehaviour
     public GameObject player;
     public LayerMask layerColetaveis;
     private bool ignorarColisão = false;
+    private float objectDistance;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class Coletar : MonoBehaviour
         personagem = player.transform;
         animator = GetComponent<Animator>();
         coleta = false;
+        objectDistance = 0;
     }
 
     void Update()
@@ -44,6 +46,8 @@ public class Coletar : MonoBehaviour
                 ColetarObjeto();
             }
         }
+
+
     }
 
 
@@ -54,7 +58,7 @@ public class Coletar : MonoBehaviour
         if (objetoColetado && objetoColetavel != null)
         {
             // Atualizar a posição do objeto coletável para acompanhar o personagem
-            Vector3 novaPosicao = personagem.position + personagem.forward * 1f + Vector3.up; // Ajuste conforme necessário
+            Vector3 novaPosicao = personagem.position + personagem.forward * objectDistance + Vector3.up; // Ajuste conforme necessário
             objetoColetavel.transform.position = novaPosicao;
 
             // Aplicar a rotação relativa para manter a orientação do objeto em relação ao personagem
@@ -106,14 +110,13 @@ public class Coletar : MonoBehaviour
             // Armazenar a rotação relativa entre o objeto coletável e o personagem
             rotacaoRelativa = Quaternion.Inverse(personagem.rotation) * objetoColetavel.transform.rotation;
 
-            // Posicionar o objeto coletável à frente e ligeiramente acima do personagem
-
-            // Definir a posição do objeto coletável à frente e ligeiramente acima do personagem
-            Vector3 novaPosicao = personagem.position + personagem.forward * 1f + Vector3.up; // Ajuste a altura conforme necessário
-            objetoColetavel.transform.position = novaPosicao;
-
-            // Aplicar a rotação relativa para manter a orientação do objeto em relação ao personagem
-            objetoColetavel.transform.rotation = personagem.rotation * rotacaoRelativa;
+            // verificar qual objeto foi coletado para alterar a distancia em relação ao personagem
+            if (objetoColetavel.tag == "Prato")
+            {
+                objectDistance = 0.5f;
+            }else if (objetoColetavel.tag == "Rock_1") {
+                objectDistance = 1f;
+            }
 
             // Marcar o objeto como coletado
             objetoColetado = true;

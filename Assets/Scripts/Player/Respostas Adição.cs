@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class RespostasAdição : MonoBehaviour
 {
     public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
-    public Collider meuColisor1;
-    public Animator npc1_animator, npc2_animator, npc3_animator, npc4_animator;
-    public TMP_InputField res2, res3, res4, res5;
+    public Collider meuColisor1, meuColisor5;
+    public Animator npc1_animator, npc2_animator, npc3_animator, npc4_animator, npc5_animator;
+    public TMP_InputField res2, res3, res4;
     public GameObject excl1, excl2, excl3, excl4, excl5;
     public TMP_Text r2text, r3text, r4text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
@@ -24,12 +24,15 @@ public class RespostasAdição : MonoBehaviour
         r3ok = false;
         r4.enabled = false;
         r4ok = false;
+        r5.enabled = false;
+        r5ok = false;
 
     }
 
     void Update()
     {
-        if (!r1ok) { R1(); }   
+        if (!r1ok) { R1(); }
+        if (!r5ok) { R5(); }
 
     }
 
@@ -112,5 +115,31 @@ public class RespostasAdição : MonoBehaviour
 
     }
 
+    void R5()
+    {
+
+        HashSet<Collider> pratosColidindo = new HashSet<Collider>();
+
+        Collider[] objetosColidindo = Physics.OverlapBox(meuColisor5.bounds.center, meuColisor5.bounds.extents, Quaternion.identity);
+
+        foreach (Collider col in objetosColidindo)
+        {
+            if (col.CompareTag("Prato"))
+            {
+                pratosColidindo.Add(col);
+
+            }
+        }
+
+        if (pratosColidindo.Count == 4)
+        {
+            r5.enabled = true;
+            npc5_animator.SetBool("NPC5_right", true);
+            q5.gameObject.SetActive(false);
+            excl5.gameObject.SetActive(false);
+            r5ok = true;
+        }
+
+    }
 
 }

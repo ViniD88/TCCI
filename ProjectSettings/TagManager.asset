@@ -16,6 +16,10 @@ TagManager:
   - Q3
   - NPC4
   - Q4
+  - NPC5
+  - Q5
+  - Prato
+  - Collider5
   layers:
   - Default
   - TransparentFX
