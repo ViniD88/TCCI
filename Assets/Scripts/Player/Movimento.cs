@@ -14,6 +14,8 @@ public class Movimento : MonoBehaviour
     private Vector3 direcaoAnterior;
     public Vector3 direcaoAtual;
     public bool objetoColetado, isInterior;
+    public AudioSource stepOnGrass, stepOnWood;
+    private float stepOnGrass_original, stepOnWood_original;
 
 
     void Start()
@@ -21,6 +23,10 @@ public class Movimento : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         direcaoAnterior = rb.velocity.normalized;
+        stepOnGrass_original = stepOnGrass.pitch; 
+        stepOnWood_original = stepOnWood.pitch;
+
+
     }
 
     void Update()
@@ -75,6 +81,8 @@ public class Movimento : MonoBehaviour
             //movimentação normal
             Vector3 movimento = moveSpeed * Time.deltaTime * new Vector3(0, 0.0f, movimentoVertical);
             transform.Translate(movimento);
+
+            
         }
 
         //rotacionar o personagem
@@ -158,6 +166,9 @@ public class Movimento : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                stepOnWood.pitch *= 1.2f;
+                stepOnGrass.pitch *= 1.2f;
+
                 if (!objetoColetado)
                 {
                     animator.SetBool("isWalking", false);
@@ -175,20 +186,32 @@ public class Movimento : MonoBehaviour
             }
             else
             {
+                stepOnWood.pitch = stepOnWood_original;
+                stepOnGrass.pitch = stepOnGrass_original;
+
                 if (movimento > 0 && !objetoColetado)
                 {
                     animator.SetBool("isWalking", true);
                     animator.SetBool("isWalkingBack", false);
+                    //SFX para passo na grama e madeira quando dentro de uma construção
+                    if (!isInterior) { stepOnWood.Stop(); stepOnGrass.Play(); }
+                    else { stepOnGrass.Stop(); stepOnWood.Play(); }
                 }
                 else if (movimento < 0 && !objetoColetado)
                 {
                     animator.SetBool("isWalking", false);
                     animator.SetBool("isWalkingBack", true);
+                    //SFX para passo na grama e madeira quando dentro de uma construção
+                    if (!isInterior) { stepOnWood.Stop(); stepOnGrass.Play(); }
+                    else { stepOnGrass.Stop(); stepOnWood.Play(); }
                 }
                 else if (movimento > 0 && objetoColetado)
                 {
                     animator.SetBool("isCarryingWalking", true);
                     animator.SetBool("isCarryingRunning", false);
+                    //SFX para passo na grama e madeira quando dentro de uma construção
+                    if (!isInterior) { stepOnWood.Stop(); stepOnGrass.Play();}
+                    else { stepOnGrass.Stop(); stepOnWood.Play();}
                 }
             }
         }
@@ -199,6 +222,9 @@ public class Movimento : MonoBehaviour
             animator.SetBool("isWalkingBack", false);
             animator.SetBool("isCarryingWalking", false);
             animator.SetBool("isCarryingRunning", false);
+            //quando parado não reproduz som de passo
+            stepOnGrass.Stop(); stepOnWood.Stop();
+            
 
         }
     }
