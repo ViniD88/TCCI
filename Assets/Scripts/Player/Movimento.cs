@@ -15,7 +15,7 @@ public class Movimento : MonoBehaviour
     public Vector3 direcaoAtual;
     public bool objetoColetado, isInterior;
     public AudioSource stepOnGrass, stepOnWood;
-    private float stepOnGrass_original, stepOnWood_original;
+    public float movimento;
 
 
     void Start()
@@ -23,8 +23,8 @@ public class Movimento : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         direcaoAnterior = rb.velocity.normalized;
-        stepOnGrass_original = stepOnGrass.pitch; 
-        stepOnWood_original = stepOnWood.pitch;
+        stepOnGrass.pitch = 0.8f; 
+        stepOnWood.pitch = 0.5f;
 
 
     }
@@ -59,6 +59,32 @@ public class Movimento : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
 
+        movimento = Input.GetAxis("Vertical");
+
+        if (movimento != 0) {
+            
+            if (isInterior)
+            {
+                if (!stepOnWood.isPlaying)
+                {
+                    stepOnGrass.Stop();
+                    stepOnWood.Play();
+                }
+            }
+            else
+            {
+                if (!stepOnGrass.isPlaying)
+                {
+                    stepOnWood.Stop();
+                    stepOnGrass.Play();
+                }
+            }
+        }
+        else { stepOnGrass.Stop(); stepOnWood.Stop(); }
+
+
+
+
     }
 
     void FixedUpdate()
@@ -75,14 +101,19 @@ public class Movimento : MonoBehaviour
             //movimentação com corrida
             Vector3 movimento = 2.2f * moveSpeed * Time.deltaTime * new Vector3(0, 0.0f, movimentoVertical);
             transform.Translate(movimento);
-           }
+            stepOnWood.pitch = 1.1f;
+            stepOnGrass.pitch = 1.1f;
+
+        }
         else
         {   
             //movimentação normal
             Vector3 movimento = moveSpeed * Time.deltaTime * new Vector3(0, 0.0f, movimentoVertical);
             transform.Translate(movimento);
 
-            
+            stepOnGrass.pitch = 0.8f;
+            stepOnWood.pitch = 0.5f;
+
         }
 
         //rotacionar o personagem
@@ -158,16 +189,12 @@ public class Movimento : MonoBehaviour
     }
 
     void Animação()
-    {
-
-        float movimento = Input.GetAxis("Vertical");
+    {       
 
         if (Input.GetAxis("Vertical") != 0 && isGrounded)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                stepOnWood.pitch *= 1.2f;
-                stepOnGrass.pitch *= 1.2f;
 
                 if (!objetoColetado)
                 {
@@ -182,36 +209,28 @@ public class Movimento : MonoBehaviour
                     animator.SetBool("isRunning", false);
                     animator.SetBool("isWalking", false);
                     animator.SetBool("isCarryingRunning", true);
+
                 }
             }
             else
             {
-                stepOnWood.pitch = stepOnWood_original;
-                stepOnGrass.pitch = stepOnGrass_original;
+
 
                 if (movimento > 0 && !objetoColetado)
                 {
                     animator.SetBool("isWalking", true);
                     animator.SetBool("isWalkingBack", false);
-                    //SFX para passo na grama e madeira quando dentro de uma construção
-                    if (!isInterior) { stepOnWood.Stop(); stepOnGrass.Play(); }
-                    else { stepOnGrass.Stop(); stepOnWood.Play(); }
+
                 }
                 else if (movimento < 0 && !objetoColetado)
                 {
                     animator.SetBool("isWalking", false);
                     animator.SetBool("isWalkingBack", true);
-                    //SFX para passo na grama e madeira quando dentro de uma construção
-                    if (!isInterior) { stepOnWood.Stop(); stepOnGrass.Play(); }
-                    else { stepOnGrass.Stop(); stepOnWood.Play(); }
                 }
                 else if (movimento > 0 && objetoColetado)
                 {
                     animator.SetBool("isCarryingWalking", true);
                     animator.SetBool("isCarryingRunning", false);
-                    //SFX para passo na grama e madeira quando dentro de uma construção
-                    if (!isInterior) { stepOnWood.Stop(); stepOnGrass.Play();}
-                    else { stepOnGrass.Stop(); stepOnWood.Play();}
                 }
             }
         }
@@ -221,10 +240,7 @@ public class Movimento : MonoBehaviour
             animator.SetBool("isRunning", false);
             animator.SetBool("isWalkingBack", false);
             animator.SetBool("isCarryingWalking", false);
-            animator.SetBool("isCarryingRunning", false);
-            //quando parado não reproduz som de passo
-            stepOnGrass.Stop(); stepOnWood.Stop();
-            
+            animator.SetBool("isCarryingRunning", false);          
 
         }
     }

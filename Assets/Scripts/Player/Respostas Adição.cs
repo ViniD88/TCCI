@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,7 @@ public class RespostasAdição : MonoBehaviour
     public GameObject excl1, excl2, excl3, excl4, excl5;
     public TMP_Text r2text, r3text, r4text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
+    public List<bool> questoesCertas;
 
     void Start()
     {
@@ -33,7 +35,7 @@ public class RespostasAdição : MonoBehaviour
     {
         if (!r1ok) { R1(); }
         if (!r5ok) { R5(); }
-
+        
     }
 
    void R1(){
@@ -58,6 +60,7 @@ public class RespostasAdição : MonoBehaviour
             q1.gameObject.SetActive(false);
             excl1.gameObject.SetActive(false); 
             r1ok = true;
+            questoesCertas.Add(r1ok);
         }
 
     }
@@ -70,6 +73,7 @@ public class RespostasAdição : MonoBehaviour
             q2.gameObject.SetActive(false);
             excl2.gameObject.SetActive(false);
             r2ok = true;
+            questoesCertas.Add(r2ok);
         }
         else
         {
@@ -87,6 +91,7 @@ public class RespostasAdição : MonoBehaviour
             q3.gameObject.SetActive(false);
             excl3.gameObject.SetActive(false);
             r3ok = true;
+            questoesCertas.Add(r3ok);
         }
         else
         {
@@ -106,6 +111,7 @@ public class RespostasAdição : MonoBehaviour
             q4.gameObject.SetActive(false);
             excl4.gameObject.SetActive(false);
             r4ok = true;
+            questoesCertas.Add(r4ok);
         }
         else
         {
@@ -138,6 +144,7 @@ public class RespostasAdição : MonoBehaviour
             q5.gameObject.SetActive(false);
             excl5.gameObject.SetActive(false);
             r5ok = true;
+            questoesCertas.Add(r5ok);
         }
 
     }
