@@ -22,6 +22,8 @@ TagManager:
   - Collider5
   - Gate
   - GateSub
+  - GateMult
+  - GateDiv
   layers:
   - Default
   - TransparentFX
