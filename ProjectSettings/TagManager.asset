@@ -24,6 +24,10 @@ TagManager:
   - GateSub
   - GateMult
   - GateDiv
+  - GateFinish
+  - NPC1_Sub
+  - NPC2_Sub
+  - Q2_sub
   layers:
   - Default
   - TransparentFX

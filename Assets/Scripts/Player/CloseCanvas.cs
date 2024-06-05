@@ -9,6 +9,7 @@ public class CloseCanvas : MonoBehaviour
     public AudioSource click;
     public Canvas canvas;
     public RespostasAdição respostasAdição;
+    public RespostasSubtração respostasSubtração;
 
     public void fechar_click()
     {
@@ -16,7 +17,7 @@ public class CloseCanvas : MonoBehaviour
         canvas.enabled = false;
 
     }
-
+    // verificar adição
     public void verificarR2_click()
     {
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
@@ -33,5 +34,18 @@ public class CloseCanvas : MonoBehaviour
     {
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
         respostasAdição.R4();
+    }
+
+    // verificar subtração
+
+    public void verificarR1_sub_click()
+    {
+        respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
+        respostasSubtração.R1();
+    }
+    public void verificarR2_sub_click()
+    {
+        respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
+        respostasSubtração.R2();
     }
 }

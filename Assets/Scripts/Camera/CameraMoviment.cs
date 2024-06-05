@@ -7,8 +7,8 @@ using UnityEngine;
 public class CameraMoviment : MonoBehaviour
 {
     public Transform alvo;
-    public float distance = 5.0f;
-    public float altura = 2.0f;
+    public float distance = 7.0f;
+    public float altura = 3.0f;
     public float suavizacao = 5.0f;
     public Movimento movimentoScript;
     public float sensibilidade = 100f;
@@ -38,7 +38,7 @@ public class CameraMoviment : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limita a rotação vertical
 
         if (movimentoScript.isInterior == true) { distance = 2.0f; altura = 3.0f; }
-        else { distance = 5.0f; altura = 2.0f; }      
+        else { distance = 7.0f; altura = 3.0f; }      
 
         // Verifica se existe um alvo
         if (alvo!= null)
