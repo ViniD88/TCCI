@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class RespostasSubtração: MonoBehaviour
 {
     public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
+    public Collider meuColisor4;
     public Animator npc1_animator, npc2_animator, npc3_animator, npc4_animator, npc5_animator;
     public TMP_InputField res1, res2, res3, res4;
     public GameObject excl1, excl2, excl3, excl4, excl5;
@@ -38,6 +39,8 @@ public class RespostasSubtração: MonoBehaviour
             npc2Rb = NPC2.GetComponent<Rigidbody>();
             npc2Rb.isKinematic = false;
         }
+
+        if (!r4ok) { R4(); }
     }
 
     public void R1()
@@ -53,12 +56,12 @@ public class RespostasSubtração: MonoBehaviour
         }
         else
         {
-            r1text.text = "Acho q não.";
+            r1text.text = "Ué, achei que fosse outro número.";
             r1.enabled = true;
         }
     }
 
-        public void R2() {
+    public void R2() {
         if (res2.text == "3")
         {
             r2text.text = "Legal, então posso pular!";
@@ -76,5 +79,51 @@ public class RespostasSubtração: MonoBehaviour
         }
     }
 
+    public void R3()
+    {
+        if (res3.text == "7")
+        {
+            r3text.text = "Uhm, falta um pouco mais da metade. Obrigada!";
+            r3.enabled = true;
+            npc3_animator.SetBool("NPC3_right", true);
+            q3.gameObject.SetActive(false);
+            excl3.gameObject.SetActive(false);
+            r3ok = true;
+            questoesCertas.Add(r3ok);
+        }
+        else
+        {
+            r3text.text = "Será? Não acho que seja essa quantia";
+            r3.enabled = true;
+        }
+    }
+
+    public void R4()
+    {
+
+        HashSet<Collider> barrisColidindo = new HashSet<Collider>();
+
+        Collider[] objetosColidindo = Physics.OverlapBox(meuColisor4.bounds.center, meuColisor4.bounds.extents, Quaternion.identity);
+
+        foreach (Collider col in objetosColidindo)
+        {
+            if (col.CompareTag("Barril"))
+            {
+                barrisColidindo.Add(col);
+
+            }
+        }
+
+        if (barrisColidindo.Count == 6)
+        {
+            r4.enabled = true;
+            npc4_animator.SetBool("NPC3_right", true);
+            q4.gameObject.SetActive(false);
+            excl4.gameObject.SetActive(false);
+            r4ok = true;
+            questoesCertas.Add(r4ok);
+        }
+
+    }
 
 }

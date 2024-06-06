@@ -48,4 +48,10 @@ public class CloseCanvas : MonoBehaviour
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
         respostasSubtração.R2();
     }
+
+    public void verificarR3_sub_click()
+    {
+        respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
+        respostasSubtração.R3();
+    }
 }

@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Coletavel
   - NPC1
   - Q1
   - Pedra_1
@@ -28,6 +27,9 @@ TagManager:
   - NPC1_Sub
   - NPC2_Sub
   - Q2_sub
+  - NPC3_Sub
+  - Barril
+  - NPC4_Sub
   layers:
   - Default
   - TransparentFX

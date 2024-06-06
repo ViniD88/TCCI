@@ -111,11 +111,11 @@ public class Coletar : MonoBehaviour
             rotacaoRelativa = Quaternion.Inverse(personagem.rotation) * objetoColetavel.transform.rotation;
 
             // verificar qual objeto foi coletado para alterar a distancia em relação ao personagem
-            if (objetoColetavel.tag == "Prato")
+            if (objetoColetavel.tag == "Prato" || objetoColetavel.tag == "Barril")
             {
                 objectDistance = 0.5f;
-            }else if (objetoColetavel.tag == "Rock_1") {
-                objectDistance = 1f;
+            }else if (objetoColetavel.tag == "Pedra_1") {
+                objectDistance = 0.7f;
             }
 
             // Marcar o objeto como coletado
