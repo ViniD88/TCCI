@@ -21,7 +21,7 @@ public class QuestõesAdição : MonoBehaviour
         Q2_sub.enabled = false;
         Q3_sub.enabled = false;
         Q4_sub.enabled = false;
-        //Q5_sub.enabled = false;
+        Q5_sub.enabled = false;
     }
 
     void Update()
@@ -72,6 +72,11 @@ public class QuestõesAdição : MonoBehaviour
             if (npc4_sub == true)
             {
                 Q4_sub.enabled = !Q4_sub.enabled;
+            }
+
+            if (npc5_sub == true)
+            {
+                Q5_sub.enabled = !Q5_sub.enabled;
             }
 
         }

@@ -10,9 +10,9 @@ public class RespostasSubtração: MonoBehaviour
     public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
     public Collider meuColisor4;
     public Animator npc1_animator, npc2_animator, npc3_animator, npc4_animator, npc5_animator;
-    public TMP_InputField res1, res2, res3, res4;
+    public TMP_InputField res1, res2, res3, res5;
     public GameObject excl1, excl2, excl3, excl4, excl5;
-    public TMP_Text r1text, r2text, r3text, r4text;
+    public TMP_Text r1text, r2text, r3text, r4text, r5text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
     public List<bool> questoesCertas;
     public GameObject NPC2;
@@ -124,6 +124,25 @@ public class RespostasSubtração: MonoBehaviour
             questoesCertas.Add(r4ok);
         }
 
+    }
+
+    public void R5()
+    {
+        if (res5.text == "4")
+        {
+            r5text.text = "Certo então! Obrigado!";
+            r5.enabled = true;
+            npc5_animator.SetBool("NPC1_right", true);
+            q5.gameObject.SetActive(false);
+            excl5.gameObject.SetActive(false);
+            r5ok = true;
+            questoesCertas.Add(r5ok);
+        }
+        else
+        {
+            r5text.text = "Acho que não. Desse jeito ela vai brigar comigo.";
+            r5.enabled = true;
+        }
     }
 
 }

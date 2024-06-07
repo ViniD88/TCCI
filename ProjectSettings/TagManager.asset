@@ -30,6 +30,11 @@ TagManager:
   - NPC3_Sub
   - Barril
   - NPC4_Sub
+  - NPC5_Sub
+  - Vila_sub
+  - Vila_ad
+  - Vila_mult
+  - Vila_div
   layers:
   - Default
   - TransparentFX
