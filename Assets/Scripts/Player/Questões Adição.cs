@@ -8,6 +8,8 @@ public class QuestõesAdição : MonoBehaviour
     public bool npc1, npc2, npc3, npc4, npc5;
     public Canvas Q1_sub, Q2_sub, Q3_sub, Q4_sub, Q5_sub;
     public bool npc1_sub, npc2_sub, npc3_sub, npc4_sub, npc5_sub;
+    public Canvas Q1_mult, Q2_mult, Q3_mult, Q4_mult, Q5_mult;
+    public bool npc1_mult, npc2_mult, npc3_mult, npc4_mult, npc5_mult;
 
     void Start()
     {
@@ -22,6 +24,12 @@ public class QuestõesAdição : MonoBehaviour
         Q3_sub.enabled = false;
         Q4_sub.enabled = false;
         Q5_sub.enabled = false;
+
+        Q1_mult.enabled = false;
+        Q2_mult.enabled = false;
+        Q3_mult.enabled = false;
+        Q4_mult.enabled = false;
+        //Q5_mult.enabled = false;
     }
 
     void Update()
@@ -79,6 +87,29 @@ public class QuestõesAdição : MonoBehaviour
                 Q5_sub.enabled = !Q5_sub.enabled;
             }
 
+            //questões multiplicação
+            if (npc1_mult == true)
+            {
+                Q1_mult.enabled = !Q1_mult.enabled;
+            }
+
+            if (npc2_mult == true)
+            {
+                Q2_mult.enabled = !Q2_mult.enabled;
+            }
+
+            if (npc3_mult == true)
+            {
+                Q3_mult.enabled = !Q3_mult.enabled;
+            }
+
+            if (npc4_mult == true)
+            {
+                Q4_mult.enabled = !Q4_mult.enabled;
+            }
+
+
+
         }
     }
 
@@ -96,6 +127,12 @@ public class QuestõesAdição : MonoBehaviour
         if (other.CompareTag("NPC3_Sub")) { npc3_sub = true; }
         if (other.CompareTag("NPC4_Sub")) { npc4_sub = true; }
         if (other.CompareTag("NPC5_Sub")) { npc5_sub = true; }
+
+        if (other.CompareTag("NPC1_Mult")) { npc1_mult = true; }
+        if (other.CompareTag("NPC2_Mult")) { npc2_mult = true; }
+        if (other.CompareTag("NPC3_Mult")) { npc3_mult = true; }
+        if (other.CompareTag("NPC4_Mult")) { npc4_mult = true; }
+        if (other.CompareTag("NPC5_Mult")) { npc5_mult = true; }
     }
 
     private void OnTriggerExit(Collider other)
@@ -112,6 +149,12 @@ public class QuestõesAdição : MonoBehaviour
         if (other.CompareTag("NPC3_Sub")) { npc3_sub = false; Q3_sub.enabled = false; }
         if (other.CompareTag("NPC4_Sub")) { npc4_sub = false; Q4_sub.enabled = false; }
         if (other.CompareTag("NPC5_Sub")) { npc5_sub = false; Q5_sub.enabled = false; }
+
+        if (other.CompareTag("NPC1_Mult")) { npc1_mult = false; Q1_mult.enabled = false; }
+        if (other.CompareTag("NPC2_Mult")) { npc2_mult = false; Q2_mult.enabled = false; }
+        if (other.CompareTag("NPC3_Mult")) { npc3_mult = false; Q3_mult.enabled = false; }
+        if (other.CompareTag("NPC4_Mult")) { npc4_mult = false; Q4_mult.enabled = false; }
+        if (other.CompareTag("NPC5_Mult")) { npc5_mult = false; Q5_mult.enabled = false; }
 
     }
 }

@@ -35,6 +35,12 @@ TagManager:
   - Vila_ad
   - Vila_mult
   - Vila_div
+  - NPC1_Mult
+  - NPC2_Mult
+  - NPC3_Mult
+  - NPC4_Mult
+  - NPC5_Mult
+  - bag
   layers:
   - Default
   - TransparentFX

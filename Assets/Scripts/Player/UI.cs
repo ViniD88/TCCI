@@ -7,6 +7,7 @@ public class UI : MonoBehaviour
 {
     public RespostasAdição respostasAdição;
     public RespostasSubtração respostasSubtração;
+    public RespostasMultiplicação respostasMultiplicação;
     public TMP_Text concluídas, vila, operação, desafios, total;
     public bool vila_ad, vila_sub, vila_mult, vila_div;
 
@@ -15,6 +16,7 @@ public class UI : MonoBehaviour
     {
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
+        respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class UI : MonoBehaviour
         if (vila_ad) { 
             concluídas.text = respostasAdição.questoesCertas.Count.ToString();
             vila.text = "VILA SOMA";
-            operação.text = "ADIÇÃO (+)";
+            operação.text = "ADIÇÃO";
             desafios.text = "Desafios Concluídos";
             total.text = "/ 5";
 
@@ -32,15 +34,15 @@ public class UI : MonoBehaviour
         if (vila_sub) { 
             concluídas.text = respostasSubtração.questoesCertas.Count.ToString();
             vila.text = "VILA MENOS";
-            operação.text = "SUBTRAÇÃO (-)";
+            operação.text = "SUBTRAÇÃO";
             desafios.text = "Desafios Concluídos";
             total.text = "/ 5";
         }
         
         if (vila_mult) { 
-            concluídas.text = respostasSubtração.questoesCertas.Count.ToString();
+            concluídas.text = respostasMultiplicação.questoesCertas.Count.ToString();
             vila.text = "VILA VEZES";
-            operação.text = "MULTIPLICAÇÃO (X)";
+            operação.text = "MULTIPLICAÇÃO";
             desafios.text = "Desafios Concluídos";
             total.text = "/ 5";
         }
@@ -48,7 +50,7 @@ public class UI : MonoBehaviour
         if (vila_div) {
             concluídas.text = respostasSubtração.questoesCertas.Count.ToString();
             vila.text = "VILA REPARTIR";
-            operação.text = "DIVISÃO (/)";
+            operação.text = "DIVISÃO";
             desafios.text = "Desafios Concluídos";
             total.text = "/ 5";
         }

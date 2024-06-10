@@ -10,6 +10,7 @@ public class CloseCanvas : MonoBehaviour
     public Canvas canvas;
     public RespostasAdição respostasAdição;
     public RespostasSubtração respostasSubtração;
+    public RespostasMultiplicação respostasMultiplicação;
 
     public void fechar_click()
     {
@@ -59,5 +60,25 @@ public class CloseCanvas : MonoBehaviour
     {
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
         respostasSubtração.R5();
+    }
+
+    // verificar multiplicação
+
+    public void verificarR2_mult_click()
+    {
+        respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
+        respostasMultiplicação.R2();
+    }
+
+    public void verificarR3_mult_click()
+    {
+        respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
+        respostasMultiplicação.R3();
+    }
+
+    public void verificarR4_mult_click()
+    {
+        respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
+        respostasMultiplicação.R4();
     }
 }
