@@ -29,7 +29,7 @@ public class QuestõesAdição : MonoBehaviour
         Q2_mult.enabled = false;
         Q3_mult.enabled = false;
         Q4_mult.enabled = false;
-        //Q5_mult.enabled = false;
+        Q5_mult.enabled = false;
     }
 
     void Update()
@@ -106,6 +106,11 @@ public class QuestõesAdição : MonoBehaviour
             if (npc4_mult == true)
             {
                 Q4_mult.enabled = !Q4_mult.enabled;
+            }
+
+            if (npc5_mult == true)
+            {
+                Q5_mult.enabled = !Q5_mult.enabled;
             }
 
 

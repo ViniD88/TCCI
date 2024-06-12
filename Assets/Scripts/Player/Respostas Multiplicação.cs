@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class RespostasMultiplicação: MonoBehaviour
 {
     public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
-    public Collider meuColisor1;
+    public Collider Colisor1, Colisor5;
     public Animator npc1_animator, npc2_animator, npc3_animator, npc4_animator, npc5_animator;
     public TMP_InputField res2, res3, res4, res5;
     public GameObject excl1, excl2, excl3, excl4, excl5;
@@ -33,15 +33,15 @@ public class RespostasMultiplicação: MonoBehaviour
 
     private void Update()
     {
-
         if (!r1ok) { R1(); }
+        if (!r5ok) { R5(); }
     }
 
     public void R1()
     {
         HashSet<Collider> sacosColidindo = new HashSet<Collider>();
 
-        Collider[] objetosColidindo = Physics.OverlapBox(meuColisor1.bounds.center, meuColisor1.bounds.extents, Quaternion.identity);
+        Collider[] objetosColidindo = Physics.OverlapBox(Colisor1.bounds.center, Colisor1.bounds.extents, Quaternion.identity);
 
         foreach (Collider col in objetosColidindo)
         {
@@ -120,6 +120,32 @@ public class RespostasMultiplicação: MonoBehaviour
             r4.enabled = true;
         }
 
+    }
+
+    public void R5()
+    {
+        HashSet<Collider> cogumelosColidindo = new HashSet<Collider>();
+
+        Collider[] objetosColidindo = Physics.OverlapBox(Colisor5.bounds.center, Colisor5.bounds.extents, Quaternion.identity);
+
+        foreach (Collider col in objetosColidindo)
+        {
+            if (col.CompareTag("cogumelos"))
+            {
+                cogumelosColidindo.Add(col);
+
+            }
+        }
+
+        if (cogumelosColidindo.Count == 8)
+        {
+            r5.enabled = true;
+            npc5_animator.SetBool("NPC1_right", true);
+            q5.gameObject.SetActive(false);
+            excl5.gameObject.SetActive(false);
+            r5ok = true;
+            questoesCertas.Add(r5ok);
+        }
     }
 
 

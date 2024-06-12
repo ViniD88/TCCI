@@ -41,6 +41,7 @@ TagManager:
   - NPC4_Mult
   - NPC5_Mult
   - bag
+  - cogumelos
   layers:
   - Default
   - TransparentFX
