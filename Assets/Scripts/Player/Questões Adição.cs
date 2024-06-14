@@ -10,6 +10,8 @@ public class QuestõesAdição : MonoBehaviour
     public bool npc1_sub, npc2_sub, npc3_sub, npc4_sub, npc5_sub;
     public Canvas Q1_mult, Q2_mult, Q3_mult, Q4_mult, Q5_mult;
     public bool npc1_mult, npc2_mult, npc3_mult, npc4_mult, npc5_mult;
+    public Canvas Q1_div, Q2_div, Q3_div, Q4_div, Q5_div;
+    public bool npc1_div, npc2_div, npc3_div, npc4_div, npc5_div;
 
     void Start()
     {
@@ -30,6 +32,12 @@ public class QuestõesAdição : MonoBehaviour
         Q3_mult.enabled = false;
         Q4_mult.enabled = false;
         Q5_mult.enabled = false;
+
+        Q1_div.enabled = false;
+        Q2_div.enabled = false;
+        Q3_div.enabled = false;
+        Q4_div.enabled = false;
+        Q5_div.enabled = false;
     }
 
     void Update()
@@ -112,8 +120,31 @@ public class QuestõesAdição : MonoBehaviour
             {
                 Q5_mult.enabled = !Q5_mult.enabled;
             }
+            //questões divisão
+            if (npc1_div == true)
+            {
+                Q1_div.enabled = !Q1_div.enabled;
+            }
 
+            if (npc2_div == true)
+            {
+                Q2_div.enabled = !Q2_div.enabled;
+            }
 
+            if (npc3_div == true)
+            {
+                Q3_div.enabled = !Q3_div.enabled;
+            }
+
+            if (npc4_div == true)
+            {
+                Q4_div.enabled = !Q4_div.enabled;
+            }
+
+            if (npc5_div == true)
+            {
+                Q5_div.enabled = !Q5_div.enabled;
+            }
 
         }
     }
@@ -138,6 +169,12 @@ public class QuestõesAdição : MonoBehaviour
         if (other.CompareTag("NPC3_Mult")) { npc3_mult = true; }
         if (other.CompareTag("NPC4_Mult")) { npc4_mult = true; }
         if (other.CompareTag("NPC5_Mult")) { npc5_mult = true; }
+
+        if (other.CompareTag("NPC1_Div")) { npc1_div = true; }
+        if (other.CompareTag("NPC2_Div")) { npc2_div = true; }
+        if (other.CompareTag("NPC3_Div")) { npc3_div = true; }
+        if (other.CompareTag("NPC4_Div")) { npc4_div = true; }
+        if (other.CompareTag("NPC5_Div")) { npc5_div = true; }
     }
 
     private void OnTriggerExit(Collider other)
@@ -160,6 +197,12 @@ public class QuestõesAdição : MonoBehaviour
         if (other.CompareTag("NPC3_Mult")) { npc3_mult = false; Q3_mult.enabled = false; }
         if (other.CompareTag("NPC4_Mult")) { npc4_mult = false; Q4_mult.enabled = false; }
         if (other.CompareTag("NPC5_Mult")) { npc5_mult = false; Q5_mult.enabled = false; }
+
+        if (other.CompareTag("NPC1_Div")) { npc1_div = false; Q1_div.enabled = false; }
+        if (other.CompareTag("NPC2_Div")) { npc2_div = false; Q2_div.enabled = false; }
+        if (other.CompareTag("NPC3_Div")) { npc3_div = false; Q3_div.enabled = false; }
+        if (other.CompareTag("NPC4_Div")) { npc4_div = false; Q4_div.enabled = false; }
+        if (other.CompareTag("NPC5_Div")) { npc5_div = false; Q5_div.enabled = false; }
 
     }
 }

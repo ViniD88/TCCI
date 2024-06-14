@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
     public RespostasAdição respostasAdição;
     public RespostasSubtração respostasSubtração;
     public RespostasMultiplicação respostasMultiplicação;
+    public RespostasDivisão respostasDivisão;
     public TMP_Text concluídas, vila, operação, desafios, total;
     public bool vila_ad, vila_sub, vila_mult, vila_div;
 
@@ -17,6 +18,7 @@ public class UI : MonoBehaviour
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
         respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
+        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
     }
 
     // Update is called once per frame
@@ -48,7 +50,7 @@ public class UI : MonoBehaviour
         }
         
         if (vila_div) {
-            concluídas.text = respostasSubtração.questoesCertas.Count.ToString();
+            concluídas.text = respostasDivisão.questoesCertas.Count.ToString();
             vila.text = "VILA REPARTIR";
             operação.text = "DIVISÃO";
             desafios.text = "Desafios Concluídos";

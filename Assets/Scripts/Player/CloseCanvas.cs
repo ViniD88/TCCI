@@ -11,6 +11,7 @@ public class CloseCanvas : MonoBehaviour
     public RespostasAdição respostasAdição;
     public RespostasSubtração respostasSubtração;
     public RespostasMultiplicação respostasMultiplicação;
+    public RespostasDivisão respostasDivisão;
 
     public void fechar_click()
     {
@@ -80,5 +81,24 @@ public class CloseCanvas : MonoBehaviour
     {
         respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
         respostasMultiplicação.R4();
+    }
+
+    // verificar divisão
+
+    public void verificarR1_div_click()
+    {
+        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        respostasDivisão.R1();
+    }
+    public void verificarR2_div_click()
+    {
+        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        respostasDivisão.R2();
+    }
+
+    public void verificarR3_div_click()
+    {
+        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        respostasDivisão.R3();
     }
 }

@@ -42,6 +42,11 @@ TagManager:
   - NPC5_Mult
   - bag
   - cogumelos
+  - NPC1_Div
+  - NPC2_Div
+  - NPC3_Div
+  - NPC4_Div
+  - NPC5_Div
   layers:
   - Default
   - TransparentFX
