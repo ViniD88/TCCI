@@ -101,4 +101,10 @@ public class CloseCanvas : MonoBehaviour
         respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
         respostasDivisão.R3();
     }
+
+    public void verificarR5_div_click()
+    {
+        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        respostasDivisão.R5();
+    }
 }

@@ -8,13 +8,15 @@ using UnityEngine.UI;
 public class RespostasDivisão: MonoBehaviour
 {
     public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
-    public Collider Colisor;
-    public Animator npc1_animator, npc2_animator, npc4_animator, npc5_animator;
+    public Collider Colisor, canteiro1, canteiro2, canteiro3;
+    public Animator npc1_animator, npc2_animator, npc4_animator, npc5_animator, moinho;
     public TMP_InputField res1, res2, res3, res4, res5;
     public GameObject excl1, excl2, excl3, excl4, excl5;
     public TMP_Text r1text, r2text, r3text, r4text, r5text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
     public List<bool> questoesCertas;
+
+
 
     void Start()
     {
@@ -31,8 +33,9 @@ public class RespostasDivisão: MonoBehaviour
 
     }
 
-    private void Update()
+    public void Update()
     {
+        if (!r4ok) { R4(); }
 
     }
 
@@ -90,6 +93,74 @@ public class RespostasDivisão: MonoBehaviour
         {
             r3text.text = "Tem certeza? Acho que não.";
             r3.enabled = true;
+        }
+    }
+
+    public void R4()
+    {
+        HashSet<Collider> floresCanteiro1 = new HashSet<Collider>();
+        HashSet<Collider> floresCanteiro2 = new HashSet<Collider>();
+        HashSet<Collider> floresCanteiro3 = new HashSet<Collider>();
+
+        Collider[] floresColidindo1 = Physics.OverlapBox(canteiro1.bounds.center, canteiro1.bounds.extents, Quaternion.identity);
+        Collider[] floresColidindo2 = Physics.OverlapBox(canteiro2.bounds.center, canteiro2.bounds.extents, Quaternion.identity);
+        Collider[] floresColidindo3 = Physics.OverlapBox(canteiro3.bounds.center, canteiro3.bounds.extents, Quaternion.identity);
+
+        foreach (Collider col in floresColidindo1)
+        {
+            if (col.CompareTag("Flores"))
+            {
+                floresCanteiro1.Add(col);
+
+            }
+        }
+
+        foreach (Collider col in floresColidindo2)
+        {
+            if (col.CompareTag("Flores"))
+            {
+                floresCanteiro2.Add(col);
+
+            }
+        }
+
+        foreach (Collider col in floresColidindo3)
+        {
+            if (col.CompareTag("Flores"))
+            {
+                floresCanteiro3.Add(col);
+
+            }
+        }
+
+        if (floresCanteiro1.Count == 4 && floresCanteiro2.Count == 4 && floresCanteiro3.Count == 4)
+        {
+            r4.enabled = true;
+            npc4_animator.SetBool("NPC3_right", true);
+            q4.gameObject.SetActive(false);
+            excl4.gameObject.SetActive(false);
+            r4ok = true;
+            questoesCertas.Add(r4ok);
+        }
+
+    }
+
+    public void R5()
+    {
+        if (res5.text == "4")
+        {
+            r5text.text = "Isso! Veja, o moinho está girando corretamente!";
+            r5.enabled = true;
+            q5.gameObject.SetActive(false);
+            excl5.gameObject.SetActive(false);
+            r5ok = true;
+            questoesCertas.Add(r5ok);
+            moinho.speed = 0.25f;
+        }
+        else
+        {
+            r5text.text = "Tem certeza? Acho que não.";
+            r5.enabled = true;
         }
     }
 
