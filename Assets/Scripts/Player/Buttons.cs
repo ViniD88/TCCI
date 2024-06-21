@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CloseCanvas : MonoBehaviour
+public class Buttons : MonoBehaviour
 {
     public AudioSource click;
     public Canvas canvas;
@@ -12,6 +12,7 @@ public class CloseCanvas : MonoBehaviour
     public RespostasSubtração respostasSubtração;
     public RespostasMultiplicação respostasMultiplicação;
     public RespostasDivisão respostasDivisão;
+    public Transição transição;
 
     public void fechar_click()
     {
@@ -19,6 +20,29 @@ public class CloseCanvas : MonoBehaviour
         canvas.enabled = false;
 
     }
+
+    public void iniciar() {
+        transição = GameObject.FindObjectOfType<Transição>();
+        transição.TransitionToScene("Game");
+    }
+
+    public void controles()
+    {
+        transição = GameObject.FindObjectOfType<Transição>();
+        transição.TransitionToScene("Controles");
+    }
+
+    public void vamosLá()
+    {
+        transição = GameObject.FindObjectOfType<Transição>();
+        transição.TransitionToScene("MenuInicial");
+    }
+
+    public void sair()
+    {
+        Application.Quit();
+    }
+
     // verificar adição
     public void verificarR2_click()
     {
