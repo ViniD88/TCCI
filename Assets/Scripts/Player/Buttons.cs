@@ -43,6 +43,12 @@ public class Buttons : MonoBehaviour
         Application.Quit();
     }
 
+    public void continuar()
+    {
+        transição = GameObject.FindObjectOfType<Transição>();
+        transição.TransitionToScene("Créditos");
+    }
+
     // verificar adição
     public void verificarR2_click()
     {

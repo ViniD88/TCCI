@@ -8,12 +8,15 @@ public class Door : MonoBehaviour {
     public RespostasAdição respostasAdição;
     public RespostasSubtração respostasSubtração;
     public RespostasMultiplicação respostasMultiplicação;
+    public RespostasDivisão respostasDivisão;
 
     void Start () {
 		anim = GetComponent<Animator> ();
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
         respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
+        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        AdOK = false;
         SubOK = false;
         MultOK = false;
         DivOK = false;
@@ -100,6 +103,11 @@ public class Door : MonoBehaviour {
         if (respostasMultiplicação.questoesCertas.Count == 5)
         {
             MultOK = true;
+        }
+
+        if (respostasDivisão.questoesCertas.Count == 5)
+        {
+            DivOK = true;
         }
     }
 }
