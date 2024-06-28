@@ -13,6 +13,7 @@ public class Buttons : MonoBehaviour
     public RespostasMultiplicação respostasMultiplicação;
     public RespostasDivisão respostasDivisão;
     public Transição transição;
+    public PauseMenu pauseMenu;
 
     public void fechar_click()
     {
@@ -47,6 +48,13 @@ public class Buttons : MonoBehaviour
     {
         transição = GameObject.FindObjectOfType<Transição>();
         transição.TransitionToScene("Créditos");
+    }
+    public void Menu()
+    {
+        pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
+        pauseMenu.Resume();
+        transição = GameObject.FindObjectOfType<Transição>();
+        transição.TransitionToScene("MenuInicial");
     }
 
     // verificar adição

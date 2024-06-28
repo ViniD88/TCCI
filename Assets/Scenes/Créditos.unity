@@ -287,8 +287,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: Desenvolvido por Vinicius Dreyer de Oliveira como projeto para o curso
-    de jogos digitais da faccat
+  m_Text: "Desenvolvido por Vinicius Dreyer de Oliveira como projeto para o curso
+    de jogos digitais da faccat\n\nAgradecimentos ao meu orientador Guilherme da
+    Costa e ao meu filho Bernardo, que foi important\xEDssimo com suas contribui\xE7\xF5es."
 --- !u!222 &225109780
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -645,6 +646,7 @@ MonoBehaviour:
   "respostasMultiplica\xE7\xE3o": {fileID: 0}
   "respostasDivis\xE3o": {fileID: 0}
   "transi\xE7\xE3o": {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!114 &747544500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,8 +1088,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: Desenvolvido por Vinicius Dreyer de Oliveira como projeto para o curso
-    de jogos digitais da faccat
+  m_Text: "Desenvolvido por Vinicius Dreyer de Oliveira como projeto para o curso
+    de jogos digitais da faccat\n\nAgradecimentos ao meu orientador Guilherme da
+    Costa e ao meu filho Bernardo, que foi important\xEDssimo com suas contribui\xE7\xF5es."
 --- !u!222 &1883863495
 CanvasRenderer:
   m_ObjectHideFlags: 0
