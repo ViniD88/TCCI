@@ -49,13 +49,13 @@ public class Buttons : MonoBehaviour
         transição = GameObject.FindObjectOfType<Transição>();
         transição.TransitionToScene("Créditos");
     }
-    public void Menu()
-    {
-        pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
-        pauseMenu.Resume();
-        transição = GameObject.FindObjectOfType<Transição>();
-        transição.TransitionToScene("MenuInicial");
-    }
+    //public void Menu()
+    //{
+        //pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
+        //pauseMenu.Resume();
+        //transição = GameObject.FindObjectOfType<Transição>();
+       // transição.TransitionToScene("MenuInicial");
+   // }
 
     // verificar adição
     public void verificarR2_click()

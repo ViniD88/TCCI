@@ -114,7 +114,7 @@ public class RespostasSubtração: MonoBehaviour
             }
         }
 
-        if (barrisColidindo.Count == 6)
+        if (barrisColidindo.Count == 4)
         {
             r4.enabled = true;
             npc4_animator.SetBool("NPC3_right", true);

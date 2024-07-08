@@ -10,7 +10,7 @@ public class RespostasMultiplicação: MonoBehaviour
     public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
     public Collider Colisor1, Colisor5;
     public Animator npc1_animator, npc2_animator, npc3_animator, npc4_animator, npc5_animator;
-    public TMP_InputField res2, res3, res4, res5;
+    public TMP_InputField res2, res3, res4;
     public GameObject excl1, excl2, excl3, excl4, excl5;
     public TMP_Text r1text, r2text, r3text, r4text, r5text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
@@ -108,7 +108,7 @@ public class RespostasMultiplicação: MonoBehaviour
         {
             r4text.text = "Sim! Agora vai ficar ótimo";
             r4.enabled = true;
-            npc4_animator.SetBool("NPC2_right", true);
+            npc4_animator.SetBool("NPC3_right", true);
             q4.gameObject.SetActive(false);
             excl4.gameObject.SetActive(false);
             r4ok = true;
@@ -137,7 +137,7 @@ public class RespostasMultiplicação: MonoBehaviour
             }
         }
 
-        if (cogumelosColidindo.Count == 8)
+        if (cogumelosColidindo.Count == 6)
         {
             r5.enabled = true;
             npc5_animator.SetBool("NPC1_right", true);

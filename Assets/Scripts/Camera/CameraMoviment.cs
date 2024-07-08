@@ -37,7 +37,7 @@ public class CameraMoviment : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limita a rotação vertical
 
-        if (movimentoScript.isInterior == true) { distance = 2.0f; altura = 3.0f; }
+        if (movimentoScript.isInterior == true) { distance = 2.5f; altura = 3.5f; }
         else { distance = 7.0f; altura = 3.0f; }      
 
         // Verifica se existe um alvo

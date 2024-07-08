@@ -10,7 +10,7 @@ public class RespostasDivisão: MonoBehaviour
     public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
     public Collider Colisor, canteiro1, canteiro2, canteiro3;
     public Animator npc1_animator, npc2_animator, npc4_animator, npc5_animator, moinho;
-    public TMP_InputField res1, res2, res3, res4, res5;
+    public TMP_InputField res1, res2, res3, res5;
     public GameObject excl1, excl2, excl3, excl4, excl5;
     public TMP_Text r1text, r2text, r3text, r4text, r5text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
