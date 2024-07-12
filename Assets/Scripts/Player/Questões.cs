@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class QuestõesAdição : MonoBehaviour
+public class Questões: MonoBehaviour
 {
     public Canvas Q1,Q2,Q3,Q4,Q5;
     public bool npc1, npc2, npc3, npc4, npc5;
+    public TMP_InputField r2text, r3text, r4text;
     public Canvas Q1_sub, Q2_sub, Q3_sub, Q4_sub, Q5_sub;
     public bool npc1_sub, npc2_sub, npc3_sub, npc4_sub, npc5_sub;
+    public TMP_InputField r1_Subtext, r2_Subtext, r3_Subtext, r5_Subtext;
     public Canvas Q1_mult, Q2_mult, Q3_mult, Q4_mult, Q5_mult;
     public bool npc1_mult, npc2_mult, npc3_mult, npc4_mult, npc5_mult;
+    public TMP_InputField r2_Multext, r3_Multext, r4_Multext;
     public Canvas Q1_div, Q2_div, Q3_div, Q4_div, Q5_div;
     public bool npc1_div, npc2_div, npc3_div, npc4_div, npc5_div;
+    public TMP_InputField r1_Divtext, r2_Divtext, r3_Divtext, r5_Divtext;
+
 
     void Start()
     {
@@ -51,16 +57,19 @@ public class QuestõesAdição : MonoBehaviour
 
             if (npc2 == true)
             {
+                r2text.text = "";
                 Q2.enabled = !Q2.enabled;
             }
 
             if (npc3 == true)
             {
+                r3text.text = "";
                 Q3.enabled = !Q3.enabled;
             }
 
             if (npc4 == true)
             {
+                r4text.text = "";
                 Q4.enabled = !Q4.enabled;
             }
 
@@ -72,16 +81,19 @@ public class QuestõesAdição : MonoBehaviour
             //questões subtração
             if (npc1_sub == true)
             {
+                r1_Subtext.text = "";
                 Q1_sub.enabled = !Q1_sub.enabled;
             }
 
             if (npc2_sub == true)
             {
+                r2_Subtext.text = "";
                 Q2_sub.enabled = !Q2_sub.enabled;
             }
 
             if (npc3_sub == true)
             {
+                r3_Subtext.text = "";
                 Q3_sub.enabled = !Q3_sub.enabled;
             }
 
@@ -92,6 +104,7 @@ public class QuestõesAdição : MonoBehaviour
 
             if (npc5_sub == true)
             {
+                r5_Subtext.text = "";
                 Q5_sub.enabled = !Q5_sub.enabled;
             }
 
@@ -103,16 +116,19 @@ public class QuestõesAdição : MonoBehaviour
 
             if (npc2_mult == true)
             {
+                r2_Multext.text = "";
                 Q2_mult.enabled = !Q2_mult.enabled;
             }
 
             if (npc3_mult == true)
             {
+                r3_Multext.text = "";
                 Q3_mult.enabled = !Q3_mult.enabled;
             }
 
             if (npc4_mult == true)
             {
+                r4_Multext.text = "";
                 Q4_mult.enabled = !Q4_mult.enabled;
             }
 
@@ -123,16 +139,19 @@ public class QuestõesAdição : MonoBehaviour
             //questões divisão
             if (npc1_div == true)
             {
+                r1_Divtext.text = "";
                 Q1_div.enabled = !Q1_div.enabled;
             }
 
             if (npc2_div == true)
             {
+                r2_Divtext.text = "";
                 Q2_div.enabled = !Q2_div.enabled;
             }
 
             if (npc3_div == true)
             {
+                r3_Divtext.text = "";
                 Q3_div.enabled = !Q3_div.enabled;
             }
 
@@ -143,6 +162,7 @@ public class QuestõesAdição : MonoBehaviour
 
             if (npc5_div == true)
             {
+                r5_Divtext.text = "";
                 Q5_div.enabled = !Q5_div.enabled;
             }
 

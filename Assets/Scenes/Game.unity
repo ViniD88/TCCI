@@ -24552,6 +24552,9 @@ MonoBehaviour:
   npc3: 0
   npc4: 0
   npc5: 0
+  r2text: {fileID: 6268640894977442422}
+  r3text: {fileID: 503662224015330156}
+  r4text: {fileID: 1597014948}
   Q1_sub: {fileID: 815040238}
   Q2_sub: {fileID: 20494673}
   Q3_sub: {fileID: 4999097868159255114}
@@ -24562,6 +24565,10 @@ MonoBehaviour:
   npc3_sub: 0
   npc4_sub: 0
   npc5_sub: 0
+  r1_Subtext: {fileID: 433519672}
+  r2_Subtext: {fileID: 1077591737}
+  r3_Subtext: {fileID: 6224389594147272563}
+  r5_Subtext: {fileID: 704377166}
   Q1_mult: {fileID: 996162069}
   Q2_mult: {fileID: 1678588873}
   Q3_mult: {fileID: 1697196934}
@@ -24572,6 +24579,9 @@ MonoBehaviour:
   npc3_mult: 0
   npc4_mult: 0
   npc5_mult: 0
+  r2_Multext: {fileID: 1678588870}
+  r3_Multext: {fileID: 675206367}
+  r4_Multext: {fileID: 934235854}
   Q1_div: {fileID: 794329434}
   Q2_div: {fileID: 1598479198}
   Q3_div: {fileID: 1414611121}
@@ -24582,6 +24592,10 @@ MonoBehaviour:
   npc3_div: 0
   npc4_div: 0
   npc5_div: 0
+  r1_Divtext: {fileID: 1698794104}
+  r2_Divtext: {fileID: 732349211}
+  r3_Divtext: {fileID: 1414611119}
+  r5_Divtext: {fileID: 62638346}
 --- !u!114 &1316166405
 MonoBehaviour:
   m_ObjectHideFlags: 0

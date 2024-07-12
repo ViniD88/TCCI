@@ -151,7 +151,7 @@ public class RespostasDivisão: MonoBehaviour
         {
             r5text.text = "Isso! Veja, o moinho está girando corretamente!";
             r5.enabled = true;
-            npc4_animator.SetBool("NPC1_right", true);
+            npc5_animator.SetBool("NPC1_right", true);
             q5.gameObject.SetActive(false);
             excl5.gameObject.SetActive(false);
             r5ok = true;
