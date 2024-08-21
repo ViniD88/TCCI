@@ -58,6 +58,7 @@ public class RespostasSubtração: MonoBehaviour
         {
             r1text.text = "Ué, achei que fosse outro número.";
             r1.enabled = true;
+            q1.enabled = false;
         }
     }
 
@@ -76,6 +77,7 @@ public class RespostasSubtração: MonoBehaviour
         {
             r2text.text =  "Uhmm...acho que não eim...";
             r2.enabled = true;
+            q2.enabled = false;
         }
     }
 
@@ -95,6 +97,7 @@ public class RespostasSubtração: MonoBehaviour
         {
             r3text.text = "Será? Não acho que seja essa quantia";
             r3.enabled = true;
+            q3.enabled = false;
         }
     }
 
@@ -142,6 +145,7 @@ public class RespostasSubtração: MonoBehaviour
         {
             r5text.text = "Acho que não. Desse jeito ela vai brigar comigo.";
             r5.enabled = true;
+            q5.enabled = false;
         }
     }
 

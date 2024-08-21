@@ -16,7 +16,7 @@ public class Movimento : MonoBehaviour
     public bool objetoColetado, isInterior;
     public AudioSource stepOnGrass, stepOnWood;
     public float movimento;
-
+    public GameObject Player;
 
     void Start()
     {
@@ -28,7 +28,6 @@ public class Movimento : MonoBehaviour
 
 
     }
-
     void Update()
     {
         // Verifica se o personagem está no chão
@@ -50,7 +49,6 @@ public class Movimento : MonoBehaviour
             {
                 animator.SetBool("isJumpingRunning", false);
                 animator.SetBool("isJumping", true);
-
             }
         }
         else

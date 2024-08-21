@@ -11,10 +11,11 @@ public class CameraMoviment : MonoBehaviour
     public float altura = 3.0f;
     public float suavizacao = 5.0f;
     public Movimento movimentoScript;
-    public float sensibilidade = 100f;
+    public float sensibilidade = 200f;
     private float xRotation = 0f;
-    private Quaternion cameraRotation;
     public Vector3 cameraPos;
+    public float mouseX, mouseY;
+    public bool is_moving;
 
     void Start()
     {
@@ -26,14 +27,29 @@ public class CameraMoviment : MonoBehaviour
         transform.LookAt(alvo.position);
 
         movimentoScript = alvo.GetComponent<Movimento>();
+        
+
     }
 
     void Update()
     {
-        
-        float mouseX = Input.GetAxis("Mouse X") * sensibilidade * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensibilidade * Time.deltaTime;
-        
+
+        mouseX = Input.GetAxis("Mouse X") * sensibilidade * Time.deltaTime;
+        mouseY = Input.GetAxis("Mouse Y") * sensibilidade * Time.deltaTime;
+        if(!is_moving)
+        {
+            if (mouseX != 0f || mouseY != 0f)
+            {
+                transform.localRotation = Quaternion.Euler(xRotation, transform.localEulerAngles.y + mouseX, 0f);
+            }
+
+        }
+    }
+
+
+    void FixedUpdate()
+    {
+          
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limita a rotação vertical
 
@@ -54,16 +70,14 @@ public class CameraMoviment : MonoBehaviour
 
                 // Faz a câmera sempre olhar para o jogador
                 transform.LookAt(alvo.position);
+                is_moving = true;
+            }
+            else
+            {
+                is_moving = false;
             }
             // se não ela fica livre pela rotação do mouse
-            else
-            {   
-                if(mouseX != 0f || mouseY != 0f)
-                {
-                    transform.localRotation = Quaternion.Euler(xRotation, transform.localEulerAngles.y + mouseX, 0f);
-                }
 
-            }
 
         }
     }

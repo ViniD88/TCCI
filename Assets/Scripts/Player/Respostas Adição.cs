@@ -15,6 +15,7 @@ public class RespostasAdição : MonoBehaviour
     public TMP_Text r2text, r3text, r4text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
     public List<bool> questoesCertas;
+    public int Q1ad, Q2ad, Q3ad, Q4ad, Q5ad;
 
     void Start()
     {
@@ -33,12 +34,15 @@ public class RespostasAdição : MonoBehaviour
 
     void Update()
     {
-        if (!r1ok) { R1(); }
-        if (!r5ok) { R5(); }
-        
+        if (!r1ok) { R1(); Q1ad = 0; } else { Q1ad = 1; }
+        if (!r2ok) { Q2ad = 0; } else { Q2ad = 1; }
+        if (!r3ok) { Q3ad = 0; } else { Q3ad = 1; }
+        if (!r4ok) { Q4ad = 0; } else { Q4ad = 1; }
+        if (!r5ok) { R5(); Q5ad = 0; } else { Q5ad = 1; }
+
     }
 
-   void R1(){
+   public void R1(){
 
         HashSet<Collider> pedrasColidindo = new HashSet<Collider>();
 
@@ -53,7 +57,7 @@ public class RespostasAdição : MonoBehaviour
             }
         }
 
-        if (pedrasColidindo.Count == 5)
+        if (pedrasColidindo.Count == 5 || PlayerPrefs.GetInt("Q1_ad")==1)
         {
             r1.enabled = true;
             npc1_animator.SetBool("NPC1_right", true);
@@ -61,6 +65,7 @@ public class RespostasAdição : MonoBehaviour
             excl1.gameObject.SetActive(false); 
             r1ok = true;
             questoesCertas.Add(r1ok);
+
         }
 
     }
@@ -78,6 +83,7 @@ public class RespostasAdição : MonoBehaviour
         else
         {
             r2text.text =  "Uhmm...acho que não é esse valor";
+            q2.enabled = false;
             r2.enabled = true;
         }
     }
@@ -97,6 +103,8 @@ public class RespostasAdição : MonoBehaviour
         {
             r3text.text = "Tem certeza? Me parece que não é essa quantidade...";
             r3.enabled = true;
+            q3.enabled = false;
+
         }
 
     }
@@ -117,6 +125,8 @@ public class RespostasAdição : MonoBehaviour
         {
             r4text.text = "Não está certo...";
             r4.enabled = true;
+            q4.enabled = false;
+
         }
 
     }

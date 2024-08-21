@@ -79,6 +79,7 @@ public class RespostasMultiplicação: MonoBehaviour
         {
             r2text.text = "Acredito que não seja isso...";
             r2.enabled = true;
+            q2.enabled = false;
         }
     }
 
@@ -98,6 +99,7 @@ public class RespostasMultiplicação: MonoBehaviour
         {
             r3text.text = "Esse valor não está certo.";
             r3.enabled = true;
+            q3.enabled = false;
         }
 
     }
@@ -118,6 +120,7 @@ public class RespostasMultiplicação: MonoBehaviour
         {
             r4text.text = "Desse jeito não vai ficar bom...";
             r4.enabled = true;
+            q4.enabled = false;
         }
 
     }

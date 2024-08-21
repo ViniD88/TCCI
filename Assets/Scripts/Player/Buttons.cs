@@ -14,6 +14,7 @@ public class Buttons : MonoBehaviour
     public RespostasDivisão respostasDivisão;
     public Transição transição;
     public PauseMenu pauseMenu;
+    public GameObject Player;
 
     public void fechar_click()
     {
@@ -25,6 +26,8 @@ public class Buttons : MonoBehaviour
     public void iniciar() {
         transição = GameObject.FindObjectOfType<Transição>();
         transição.TransitionToScene("Game");
+        PlayerPrefs.SetInt("Q1_ad", 0);
+
     }
 
     public void controles()
@@ -44,18 +47,21 @@ public class Buttons : MonoBehaviour
         Application.Quit();
     }
 
+    public void salvar()
+    {
+        PlayerPrefs.SetFloat("X", Player.transform.position.x);
+        PlayerPrefs.SetFloat("Y", Player.transform.position.y);
+        PlayerPrefs.SetFloat("Z", Player.transform.position.z);
+        respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
+        PlayerPrefs.SetInt("Q1_ad", respostasAdição.Q1ad);
+        PlayerPrefs.Save();
+    }
+
     public void continuar()
     {
         transição = GameObject.FindObjectOfType<Transição>();
         transição.TransitionToScene("Créditos");
     }
-    //public void Menu()
-    //{
-        //pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
-        //pauseMenu.Resume();
-        //transição = GameObject.FindObjectOfType<Transição>();
-       // transição.TransitionToScene("MenuInicial");
-   // }
 
     // verificar adição
     public void verificarR2_click()

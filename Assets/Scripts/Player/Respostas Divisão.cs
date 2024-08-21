@@ -56,6 +56,7 @@ public class RespostasDivisão: MonoBehaviour
         {
             r1text.text = "Desse jeito meu chefe não vai gostar.";
             r1.enabled = true;
+            q1.enabled = false;
         }
     }
 
@@ -75,6 +76,7 @@ public class RespostasDivisão: MonoBehaviour
         {
             r2text.text = "Acredito que não seja esse valor.";
             r2.enabled = true;
+            q2.enabled = false;
         }
     }
 
@@ -93,6 +95,7 @@ public class RespostasDivisão: MonoBehaviour
         {
             r3text.text = "Tem certeza? Acho que não.";
             r3.enabled = true;
+            q3.enabled = false;
         }
     }
 
@@ -162,6 +165,7 @@ public class RespostasDivisão: MonoBehaviour
         {
             r5text.text = "Tem certeza? Acho que não.";
             r5.enabled = true;
+            q5.enabled = false;
         }
     }
 
