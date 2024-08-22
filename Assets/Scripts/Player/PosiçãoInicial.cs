@@ -6,15 +6,13 @@ public class PosiçãoInicial : MonoBehaviour
 {
 
     public GameObject Player;
-    private bool carregou;
 
     void Start()
     {
         
-        if (PlayerPrefs.HasKey("X") && PlayerPrefs.HasKey("Y") && PlayerPrefs.HasKey("Z") && carregou == false)
+        if (PlayerPrefs.HasKey("X") && PlayerPrefs.HasKey("Y") && PlayerPrefs.HasKey("Z"))
         {
             Player.transform.localPosition = new Vector3(PlayerPrefs.GetFloat("X"), PlayerPrefs.GetFloat("Y"), PlayerPrefs.GetFloat("Z"));
-            carregou = true;
         }
 
         Physics.SyncTransforms();

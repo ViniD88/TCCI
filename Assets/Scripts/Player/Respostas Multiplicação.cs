@@ -15,19 +15,30 @@ public class RespostasMultiplicação: MonoBehaviour
     public TMP_Text r1text, r2text, r3text, r4text, r5text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
     public List<bool> questoesCertas;
+    public int Q1mul, Q2mul, Q3mul, Q4mul, Q5mul;
 
     void Start()
     {
         r1.enabled = false;
-        r1ok = false;
         r2.enabled = false;
-        r2ok = false;
         r3.enabled = false;
-        r3ok = false;
         r4.enabled = false;
-        r4ok = false;
         r5.enabled = false;
-        r5ok = false;
+
+        if (PlayerPrefs.GetInt("Q2_mul") == 1)
+        {
+            R2();
+        }
+
+        if (PlayerPrefs.GetInt("Q3_mul") == 1)
+        {
+            R3();
+        }
+
+        if (PlayerPrefs.GetInt("Q4_mul") == 1)
+        {
+            R4();
+        }
 
     }
 
@@ -52,27 +63,29 @@ public class RespostasMultiplicação: MonoBehaviour
             }
         }
 
-        if (sacosColidindo.Count == 6)
+        if (sacosColidindo.Count == 6 || PlayerPrefs.GetInt("Q1_mul") == 1)
         {
-            r1.enabled = true;
+            if (PlayerPrefs.GetInt("Q1_mul") != 1) { r1.enabled = true; }
             npc1_animator.SetBool("NPC1_right", true);
             q1.gameObject.SetActive(false);
             excl1.gameObject.SetActive(false);
             r1ok = true;
+            Q1mul = 1;
             questoesCertas.Add(r1ok);
         }
     }
 
     public void R2()
     {
-        if (res2.text == "400")
+        if (res2.text == "400" || PlayerPrefs.GetInt("Q2_mul") == 1)
         {
             r2text.text = "Obrigada! Daqui a pouco irei para lá.";
-            r2.enabled = true;
+            if (PlayerPrefs.GetInt("Q2_mul") != 1) { r2.enabled = true; }
             npc2_animator.SetBool("NPC3_right", true);
             q2.gameObject.SetActive(false);
             excl2.gameObject.SetActive(false);
             r2ok = true;
+            Q2mul = 1;
             questoesCertas.Add(r2ok);
         }
         else
@@ -85,14 +98,15 @@ public class RespostasMultiplicação: MonoBehaviour
 
     public void R3()
     {
-        if (res3.text == "21")
+        if (res3.text == "21" || PlayerPrefs.GetInt("Q3_mul") == 1)
         {
             r3text.text = "Muito bem!";
-            r3.enabled = true;
+            if (PlayerPrefs.GetInt("Q3_mul") != 1) { r3.enabled = true; }
             npc3_animator.SetBool("NPC5_right", true);
             q3.gameObject.SetActive(false);
             excl3.gameObject.SetActive(false);
             r3ok = true;
+            Q3mul = 1;
             questoesCertas.Add(r3ok);
         }
         else
@@ -106,14 +120,15 @@ public class RespostasMultiplicação: MonoBehaviour
 
     public void R4()
     {
-        if (res4.text == "12")
+        if (res4.text == "12" || PlayerPrefs.GetInt("Q4_mul") == 1)
         {
             r4text.text = "Sim! Agora vai ficar ótimo";
-            r4.enabled = true;
+            if (PlayerPrefs.GetInt("Q4_mul") != 1) { r4.enabled = true; }
             npc4_animator.SetBool("NPC3_right", true);
             q4.gameObject.SetActive(false);
             excl4.gameObject.SetActive(false);
             r4ok = true;
+            Q4mul = 1;
             questoesCertas.Add(r4ok);
         }
         else
@@ -140,13 +155,14 @@ public class RespostasMultiplicação: MonoBehaviour
             }
         }
 
-        if (cogumelosColidindo.Count == 6)
+        if (cogumelosColidindo.Count == 6 || PlayerPrefs.GetInt("Q5_mul") == 1)
         {
-            r5.enabled = true;
+            if (PlayerPrefs.GetInt("Q5_mul") != 1) { r5.enabled = true; }
             npc5_animator.SetBool("NPC1_right", true);
             q5.gameObject.SetActive(false);
             excl5.gameObject.SetActive(false);
             r5ok = true;
+            Q5mul = 1;
             questoesCertas.Add(r5ok);
         }
     }

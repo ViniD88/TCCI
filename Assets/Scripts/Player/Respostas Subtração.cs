@@ -17,41 +17,60 @@ public class RespostasSubtração: MonoBehaviour
     public List<bool> questoesCertas;
     public GameObject NPC2;
     public Rigidbody npc2Rb;
+    public int Q1sub, Q2sub, Q3sub, Q4sub, Q5sub;
 
     void Start()
     {
         r1.enabled = false;
-        r1ok = false;
         r2.enabled = false;
-        r2ok = false;
         r3.enabled = false;
-        r3ok = false;
         r4.enabled = false;
-        r4ok = false;
         r5.enabled = false;
-        r5ok = false;
+
+        if (PlayerPrefs.GetInt("Q1_sub") == 1)
+        {
+            R1();
+        }
+
+        if (PlayerPrefs.GetInt("Q2_sub") == 1)
+        {
+            R2();
+        }
+
+        if (PlayerPrefs.GetInt("Q3_sub") == 1)
+        {
+            R3();
+        }
+
+        if (PlayerPrefs.GetInt("Q5_sub") == 1)
+        {
+            R5();
+        }
 
     }
 
     private void Update()
     {
+
         if (r2ok) {
             npc2Rb = NPC2.GetComponent<Rigidbody>();
             npc2Rb.isKinematic = false;
         }
 
-        if (!r4ok) { R4(); }
+        if (!r4ok) { R4();}
+
     }
 
     public void R1()
     {
-        if (res1.text == "6")
+        if (res1.text == "6" || PlayerPrefs.GetInt("Q1_sub") == 1)
         {
             r1text.text = "Ah sim, isso mesmo!";
-            r1.enabled = true;
+            if (PlayerPrefs.GetInt("Q1_sub") != 1) { r1.enabled = true; }
             q1.gameObject.SetActive(false);
             excl1.gameObject.SetActive(false);
             r1ok = true;
+            Q1sub = 1;
             questoesCertas.Add(r1ok);
         }
         else
@@ -63,14 +82,15 @@ public class RespostasSubtração: MonoBehaviour
     }
 
     public void R2() {
-        if (res2.text == "3")
+        if (res2.text == "3" || PlayerPrefs.GetInt("Q2_sub") == 1)
         {
             r2text.text = "Legal, então posso pular!";
-            r2.enabled = true;
+            if (PlayerPrefs.GetInt("Q2_sub") != 1) { r2.enabled = true; }
             npc2_animator.SetBool("NPC2_sub", true);
             q2.gameObject.SetActive(false);
             excl2.gameObject.SetActive(false);
             r2ok = true;
+            Q2sub = 1;
             questoesCertas.Add(r2ok);
         }
         else
@@ -83,14 +103,15 @@ public class RespostasSubtração: MonoBehaviour
 
     public void R3()
     {
-        if (res3.text == "7")
+        if (res3.text == "7" || PlayerPrefs.GetInt("Q3_sub") == 1)
         {
             r3text.text = "Uhm, falta um pouco mais da metade. Obrigada!";
-            r3.enabled = true;
+            if (PlayerPrefs.GetInt("Q3_sub") != 1) { r3.enabled = true; }
             npc3_animator.SetBool("NPC3_right", true);
             q3.gameObject.SetActive(false);
             excl3.gameObject.SetActive(false);
             r3ok = true;
+            Q3sub = 1;
             questoesCertas.Add(r3ok);
         }
         else
@@ -117,13 +138,14 @@ public class RespostasSubtração: MonoBehaviour
             }
         }
 
-        if (barrisColidindo.Count == 4)
+        if (barrisColidindo.Count == 4 || PlayerPrefs.GetInt("Q4_sub") == 1)
         {
-            r4.enabled = true;
+            if (PlayerPrefs.GetInt("Q4_sub") != 1) { r4.enabled = true; }
             npc4_animator.SetBool("NPC3_right", true);
             q4.gameObject.SetActive(false);
             excl4.gameObject.SetActive(false);
             r4ok = true;
+            Q4sub = 1;
             questoesCertas.Add(r4ok);
         }
 
@@ -131,14 +153,15 @@ public class RespostasSubtração: MonoBehaviour
 
     public void R5()
     {
-        if (res5.text == "4")
+        if (res5.text == "4" || PlayerPrefs.GetInt("Q5_sub") == 1)
         {
             r5text.text = "Certo então! Obrigado!";
-            r5.enabled = true;
+            if (PlayerPrefs.GetInt("Q5_sub") != 1) { r5.enabled = true; }
             npc5_animator.SetBool("NPC1_right", true);
             q5.gameObject.SetActive(false);
             excl5.gameObject.SetActive(false);
             r5ok = true;
+            Q5sub = 1;
             questoesCertas.Add(r5ok);
         }
         else

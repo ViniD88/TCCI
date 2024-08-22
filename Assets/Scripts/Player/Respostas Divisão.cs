@@ -15,41 +15,59 @@ public class RespostasDivisão: MonoBehaviour
     public TMP_Text r1text, r2text, r3text, r4text, r5text;
     private bool r1ok, r2ok, r3ok, r4ok, r5ok;
     public List<bool> questoesCertas;
-
-
+    public int Q1div, Q2div, Q3div, Q4div, Q5div;
 
     void Start()
     {
         r1.enabled = false;
-        r1ok = false;
         r2.enabled = false;
-        r2ok = false;
         r3.enabled = false;
-        r3ok = false;
         r4.enabled = false;
-        r4ok = false;
         r5.enabled = false;
-        r5ok = false;
+
+        if (PlayerPrefs.GetInt("Q1_div") == 1)
+        {
+            R1();
+        }
+
+        if (PlayerPrefs.GetInt("Q2_div") == 1)
+        {
+            R2();
+        }
+
+        if (PlayerPrefs.GetInt("Q3_div") == 1)
+        {
+            R3();
+        }
+
+        if (PlayerPrefs.GetInt("Q5_div") == 1)
+        {
+            R5();
+        }
+
 
     }
 
     public void Update()
     {
+
         if (!r4ok) { R4(); }
+
 
     }
 
 
     public void R1()
     {
-        if (res1.text == "6")
+        if (res1.text == "6" || PlayerPrefs.GetInt("Q1_div") == 1)
         {
             r1text.text = "Valeu, vou começar agorinha!";
-            r1.enabled = true;
+            if (PlayerPrefs.GetInt("Q1_div") != 1) { r1.enabled = true; }
             npc1_animator.SetBool("NPC1_right", true);
             q1.gameObject.SetActive(false);
             excl1.gameObject.SetActive(false);
             r1ok = true;
+            Q1div = 1;
             questoesCertas.Add(r1ok);
         }
         else
@@ -62,14 +80,15 @@ public class RespostasDivisão: MonoBehaviour
 
     public void R2()
     {
-        if (res2.text == "8")
+        if (res2.text == "8" || PlayerPrefs.GetInt("Q2_div") == 1)
         {
             r2text.text = "Obrigada!!";
-            r2.enabled = true;
+            if (PlayerPrefs.GetInt("Q2_div") != 1) { r2.enabled = true; }
             npc2_animator.SetBool("NPC3_right", true);
             q2.gameObject.SetActive(false);
             excl2.gameObject.SetActive(false);
             r2ok = true;
+            Q2div = 1;
             questoesCertas.Add(r2ok);
         }
         else
@@ -82,13 +101,14 @@ public class RespostasDivisão: MonoBehaviour
 
     public void R3()
     {
-        if (res3.text == "5")
+        if (res3.text == "5" || PlayerPrefs.GetInt("Q3_div") == 1)
         {
             r3text.text = "Ah, isso mesmo!";
-            r3.enabled = true;
+            if (PlayerPrefs.GetInt("Q3_div") != 1) { r3.enabled = true; }
             q3.gameObject.SetActive(false);
             excl3.gameObject.SetActive(false);
             r3ok = true;
+            Q3div = 1;
             questoesCertas.Add(r3ok);
         }
         else
@@ -136,13 +156,14 @@ public class RespostasDivisão: MonoBehaviour
             }
         }
 
-        if (floresCanteiro1.Count == 4 && floresCanteiro2.Count == 4 && floresCanteiro3.Count == 4)
+        if ((floresCanteiro1.Count == 4 && floresCanteiro2.Count == 4 && floresCanteiro3.Count == 4) || PlayerPrefs.GetInt("Q4_div") == 1)
         {
-            r4.enabled = true;
+            if (PlayerPrefs.GetInt("Q4_div") != 1) { r4.enabled = true; }
             npc4_animator.SetBool("NPC3_right", true);
             q4.gameObject.SetActive(false);
             excl4.gameObject.SetActive(false);
             r4ok = true;
+            Q4div = 1;
             questoesCertas.Add(r4ok);
         }
 
@@ -150,14 +171,15 @@ public class RespostasDivisão: MonoBehaviour
 
     public void R5()
     {
-        if (res5.text == "4")
+        if (res5.text == "4" || PlayerPrefs.GetInt("Q5_div") == 1)
         {
             r5text.text = "Isso! Veja, o moinho está girando corretamente!";
-            r5.enabled = true;
+            if (PlayerPrefs.GetInt("Q5_div") != 1) { r5.enabled = true; }
             npc5_animator.SetBool("NPC1_right", true);
             q5.gameObject.SetActive(false);
             excl5.gameObject.SetActive(false);
             r5ok = true;
+            Q5div = 1;
             questoesCertas.Add(r5ok);
             moinho.speed = 0.25f;
         }

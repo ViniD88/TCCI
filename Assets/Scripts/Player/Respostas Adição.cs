@@ -13,33 +13,39 @@ public class RespostasAdição : MonoBehaviour
     public TMP_InputField res2, res3, res4;
     public GameObject excl1, excl2, excl3, excl4, excl5;
     public TMP_Text r2text, r3text, r4text;
-    private bool r1ok, r2ok, r3ok, r4ok, r5ok;
+    public bool r1ok, r2ok, r3ok, r4ok, r5ok;
     public List<bool> questoesCertas;
     public int Q1ad, Q2ad, Q3ad, Q4ad, Q5ad;
 
     void Start()
     {
         r1.enabled = false;
-        r1ok = false;
         r2.enabled = false;
-        r2ok = false;
         r3.enabled = false;
-        r3ok = false;
         r4.enabled = false;
-        r4ok = false;
         r5.enabled = false;
-        r5ok = false;
+
+        if(PlayerPrefs.GetInt("Q2_ad") == 1)
+        {
+            R2();
+        }
+
+        if (PlayerPrefs.GetInt("Q3_ad") == 1)
+        {
+            R3();
+        }
+
+        if (PlayerPrefs.GetInt("Q4_ad") == 1)
+        {
+            R4();
+        }
 
     }
 
     void Update()
     {
-        if (!r1ok) { R1(); Q1ad = 0; } else { Q1ad = 1; }
-        if (!r2ok) { Q2ad = 0; } else { Q2ad = 1; }
-        if (!r3ok) { Q3ad = 0; } else { Q3ad = 1; }
-        if (!r4ok) { Q4ad = 0; } else { Q4ad = 1; }
-        if (!r5ok) { R5(); Q5ad = 0; } else { Q5ad = 1; }
-
+        if (!r1ok) { R1(); }
+        if (!r5ok) { R5(); }
     }
 
    public void R1(){
@@ -59,25 +65,27 @@ public class RespostasAdição : MonoBehaviour
 
         if (pedrasColidindo.Count == 5 || PlayerPrefs.GetInt("Q1_ad")==1)
         {
-            r1.enabled = true;
+            if (PlayerPrefs.GetInt("Q1_ad") != 1) { r1.enabled = true; }
             npc1_animator.SetBool("NPC1_right", true);
             q1.gameObject.SetActive(false);
             excl1.gameObject.SetActive(false); 
             r1ok = true;
+            Q1ad = 1;
             questoesCertas.Add(r1ok);
 
         }
 
     }
     public void R2() {
-        if (res2.text == "20")
+        if (res2.text == "20" || PlayerPrefs.GetInt("Q2_ad") == 1)
         {
             r2text.text = "Ah, isso mesmo!! muito bem!";
-            r2.enabled = true;
+            if (PlayerPrefs.GetInt("Q2_ad") != 1) { r2.enabled = true; }
             npc2_animator.SetBool("NPC1_right", true);
             q2.gameObject.SetActive(false);
             excl2.gameObject.SetActive(false);
             r2ok = true;
+            Q2ad = 1;
             questoesCertas.Add(r2ok);
         }
         else
@@ -89,14 +97,15 @@ public class RespostasAdição : MonoBehaviour
     }
 
     public void R3() {
-        if (res3.text == "13")
+        if (res3.text == "13" || PlayerPrefs.GetInt("Q3_ad") == 1)
         {
             r3text.text = "Claro, 13 litros no total!";
-            r3.enabled = true;
+            if (PlayerPrefs.GetInt("Q3_ad") != 1) { r3.enabled = true; }
             npc3_animator.SetBool("NPC3_right", true);
             q3.gameObject.SetActive(false);
             excl3.gameObject.SetActive(false);
             r3ok = true;
+            Q3ad = 1;
             questoesCertas.Add(r3ok);
         }
         else
@@ -111,14 +120,15 @@ public class RespostasAdição : MonoBehaviour
 
     public void R4()
     {
-        if (res4.text == "15")
+        if (res4.text == "15" || PlayerPrefs.GetInt("Q4_ad") == 1)
         {
             r4text.text = "Que ótimo! É justamente a quantia que preciso";
-            r4.enabled = true;
+            if (PlayerPrefs.GetInt("Q4_ad") != 1) { r4.enabled = true; }
             npc4_animator.SetBool("NPC3_right", true);
             q4.gameObject.SetActive(false);
             excl4.gameObject.SetActive(false);
             r4ok = true;
+            Q4ad = 1;
             questoesCertas.Add(r4ok);
         }
         else
@@ -147,13 +157,14 @@ public class RespostasAdição : MonoBehaviour
             }
         }
 
-        if (pratosColidindo.Count == 4)
+        if (pratosColidindo.Count == 4 || PlayerPrefs.GetInt("Q5_ad") == 1)
         {
-            r5.enabled = true;
+            if (PlayerPrefs.GetInt("Q5_ad") != 1) { r5.enabled = true; }
             npc5_animator.SetBool("NPC5_right", true);
             q5.gameObject.SetActive(false);
             excl5.gameObject.SetActive(false);
             r5ok = true;
+            Q5ad = 1;
             questoesCertas.Add(r5ok);
         }
 

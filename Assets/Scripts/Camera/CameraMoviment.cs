@@ -19,13 +19,14 @@ public class CameraMoviment : MonoBehaviour
 
     void Start()
     {
+        alvo.position = transform.localPosition = new Vector3(PlayerPrefs.GetFloat("X"), PlayerPrefs.GetFloat("Y"), PlayerPrefs.GetFloat("Z"));
         // Calcula a posição da câmera com base na posição do jogador
         Vector3 desiredPosition = alvo.position - alvo.forward * distance + Vector3.up * altura;
         // Define a posição inicial da câmera
         transform.position = desiredPosition;
         // Faz a câmera olhar para o jogador
         transform.LookAt(alvo.position);
-
+        
         movimentoScript = alvo.GetComponent<Movimento>();
         
 
