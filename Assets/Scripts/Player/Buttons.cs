@@ -71,27 +71,31 @@ public class Buttons : MonoBehaviour
         PlayerPrefs.SetInt("Q3_ad", respostasAdição.Q3ad);
         PlayerPrefs.SetInt("Q4_ad", respostasAdição.Q4ad);
         PlayerPrefs.SetInt("Q5_ad", respostasAdição.Q5ad);
+        PlayerPrefs.SetInt("Q6_ad", respostasAdição.Q6ad);
 
         PlayerPrefs.SetInt("Q1_sub", respostasSubtração.Q1sub);
         PlayerPrefs.SetInt("Q2_sub", respostasSubtração.Q2sub);
         PlayerPrefs.SetInt("Q3_sub", respostasSubtração.Q3sub);
         PlayerPrefs.SetInt("Q4_sub", respostasSubtração.Q4sub);
         PlayerPrefs.SetInt("Q5_sub", respostasSubtração.Q5sub);
+        PlayerPrefs.SetInt("Q6_sub", respostasSubtração.Q6sub);
 
         PlayerPrefs.SetInt("Q1_mul", respostasMultiplicação.Q1mul);
         PlayerPrefs.SetInt("Q2_mul", respostasMultiplicação.Q2mul);
         PlayerPrefs.SetInt("Q3_mul", respostasMultiplicação.Q3mul);
         PlayerPrefs.SetInt("Q4_mul", respostasMultiplicação.Q4mul);
         PlayerPrefs.SetInt("Q5_mul", respostasMultiplicação.Q5mul);
+        PlayerPrefs.SetInt("Q6_mul", respostasMultiplicação.Q6mul);
 
         PlayerPrefs.SetInt("Q1_div", respostasDivisão.Q1div);
         PlayerPrefs.SetInt("Q2_div", respostasDivisão.Q2div);
         PlayerPrefs.SetInt("Q3_div", respostasDivisão.Q3div);
         PlayerPrefs.SetInt("Q4_div", respostasDivisão.Q4div);
         PlayerPrefs.SetInt("Q5_div", respostasDivisão.Q5div);
+        PlayerPrefs.SetInt("Q6_div", respostasDivisão.Q6div);
 
         PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetInt("Q2_ad"));
+
     }
 
     public void continuar()
@@ -119,6 +123,12 @@ public class Buttons : MonoBehaviour
         respostasAdição.R4();
     }
 
+    public void verificarR6_click()
+    {
+        respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
+        respostasAdição.R6();
+    }
+
     // verificar subtração
 
     public void verificarR1_sub_click()
@@ -144,6 +154,12 @@ public class Buttons : MonoBehaviour
         respostasSubtração.R5();
     }
 
+    public void verificarR6_sub_click()
+    {
+        respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
+        respostasSubtração.R6();
+    }
+
     // verificar multiplicação
 
     public void verificarR2_mult_click()
@@ -162,6 +178,12 @@ public class Buttons : MonoBehaviour
     {
         respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
         respostasMultiplicação.R4();
+    }
+
+    public void verificarR6_mult_click()
+    {
+        respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
+        respostasMultiplicação.R6();
     }
 
     // verificar divisão
@@ -187,5 +209,11 @@ public class Buttons : MonoBehaviour
     {
         respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
         respostasDivisão.R5();
+    }
+
+    public void verificarR6_div_click()
+    {
+        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        respostasDivisão.R6();
     }
 }

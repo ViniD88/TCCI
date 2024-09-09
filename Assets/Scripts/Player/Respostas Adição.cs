@@ -7,15 +7,15 @@ using UnityEngine.UI;
 
 public class RespostasAdição : MonoBehaviour
 {
-    public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
+    public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5, q6, r6;
     public Collider meuColisor1, meuColisor5;
     public Animator npc1_animator, npc2_animator, npc3_animator, npc4_animator, npc5_animator;
-    public TMP_InputField res2, res3, res4;
-    public GameObject excl1, excl2, excl3, excl4, excl5;
-    public TMP_Text r2text, r3text, r4text;
-    public bool r1ok, r2ok, r3ok, r4ok, r5ok;
+    public TMP_InputField res2, res3, res4, res6;
+    public GameObject excl1, excl2, excl3, excl4, excl5, excl6;
+    public TMP_Text r2text, r3text, r4text, r6text;
+    public bool r1ok, r2ok, r3ok, r4ok, r5ok, r6ok;
     public List<bool> questoesCertas;
-    public int Q1ad, Q2ad, Q3ad, Q4ad, Q5ad;
+    public int Q1ad, Q2ad, Q3ad, Q4ad, Q5ad, Q6ad;
 
     void Start()
     {
@@ -24,8 +24,9 @@ public class RespostasAdição : MonoBehaviour
         r3.enabled = false;
         r4.enabled = false;
         r5.enabled = false;
+        r6.enabled = false;
 
-        if(PlayerPrefs.GetInt("Q2_ad") == 1)
+        if (PlayerPrefs.GetInt("Q2_ad") == 1)
         {
             R2();
         }
@@ -38,6 +39,11 @@ public class RespostasAdição : MonoBehaviour
         if (PlayerPrefs.GetInt("Q4_ad") == 1)
         {
             R4();
+        }
+
+        if (PlayerPrefs.GetInt("Q6_ad") == 1)
+        {
+            R6();
         }
 
     }
@@ -166,6 +172,28 @@ public class RespostasAdição : MonoBehaviour
             r5ok = true;
             Q5ad = 1;
             questoesCertas.Add(r5ok);
+        }
+
+    }
+
+    public void R6()
+    {
+        if (res6.text == "18" || PlayerPrefs.GetInt("Q6_ad") == 1)
+        {
+            r6text.text = "Isso mesmo! Agora posso dormir!";
+            if (PlayerPrefs.GetInt("Q6_ad") != 1) { r6.enabled = true; }
+            q6.gameObject.SetActive(false);
+            excl6.gameObject.SetActive(false);
+            r6ok = true;
+            Q6ad = 1;
+            questoesCertas.Add(r6ok);
+        }
+        else
+        {
+            r6text.text = "Ai, ai, ai, desse jeito não vou dormir!";
+            r6.enabled = true;
+            q6.enabled = false;
+
         }
 
     }

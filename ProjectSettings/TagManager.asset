@@ -48,6 +48,9 @@ TagManager:
   - NPC4_Div
   - NPC5_Div
   - Flores
+  - NPC6
+  - NPC6_Sub
+  - NPC6_Mult
   layers:
   - Default
   - TransparentFX

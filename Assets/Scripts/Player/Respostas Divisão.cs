@@ -7,15 +7,15 @@ using UnityEngine.UI;
 
 public class RespostasDivisão: MonoBehaviour
 {
-    public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5;
+    public Canvas q1, r1, q2, r2, q3, r3, q4, r4, q5, r5, q6, r6;
     public Collider Colisor, canteiro1, canteiro2, canteiro3;
-    public Animator npc1_animator, npc2_animator, npc4_animator, npc5_animator, moinho;
-    public TMP_InputField res1, res2, res3, res5;
-    public GameObject excl1, excl2, excl3, excl4, excl5;
-    public TMP_Text r1text, r2text, r3text, r4text, r5text;
-    private bool r1ok, r2ok, r3ok, r4ok, r5ok;
+    public Animator npc1_animator, npc2_animator, npc4_animator, npc5_animator, moinho, npc6_animator;
+    public TMP_InputField res1, res2, res3, res5, res6;
+    public GameObject excl1, excl2, excl3, excl4, excl5, excl6;
+    public TMP_Text r1text, r2text, r3text, r4text, r5text, r6text;
+    private bool r1ok, r2ok, r3ok, r4ok, r5ok, r6ok;
     public List<bool> questoesCertas;
-    public int Q1div, Q2div, Q3div, Q4div, Q5div;
+    public int Q1div, Q2div, Q3div, Q4div, Q5div, Q6div;
 
     void Start()
     {
@@ -24,6 +24,7 @@ public class RespostasDivisão: MonoBehaviour
         r3.enabled = false;
         r4.enabled = false;
         r5.enabled = false;
+        r6.enabled = false;
 
         if (PlayerPrefs.GetInt("Q1_div") == 1)
         {
@@ -43,6 +44,11 @@ public class RespostasDivisão: MonoBehaviour
         if (PlayerPrefs.GetInt("Q5_div") == 1)
         {
             R5();
+        }
+
+        if (PlayerPrefs.GetInt("Q6_div") == 1)
+        {
+            R6();
         }
 
 
@@ -188,6 +194,27 @@ public class RespostasDivisão: MonoBehaviour
             r5text.text = "Tem certeza? Acho que não.";
             r5.enabled = true;
             q5.enabled = false;
+        }
+    }
+
+    public void R6()
+    {
+        if (res6.text == "5" || PlayerPrefs.GetInt("Q6_div") == 1)
+        {
+            r6text.text = "Corretíssimo";
+            if (PlayerPrefs.GetInt("Q6_div") != 1) { r6.enabled = true; }
+            npc6_animator.SetBool("NPC5_right", true);
+            q6.gameObject.SetActive(false);
+            excl6.gameObject.SetActive(false);
+            r6ok = true;
+            Q6div = 1;
+            questoesCertas.Add(r6ok);
+        }
+        else
+        {
+            r6text.text = "Não está correto.";
+            r6.enabled = true;
+            q6.enabled = false;
         }
     }
 
