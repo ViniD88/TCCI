@@ -16,6 +16,7 @@ public class RespostasMultiplicação: MonoBehaviour
     private bool r1ok, r2ok, r3ok, r4ok, r5ok, r6ok;
     public List<bool> questoesCertas;
     public int Q1mul, Q2mul, Q3mul, Q4mul, Q5mul, Q6mul;
+    public AudioSource certo, errado;
 
     void Start()
     {
@@ -79,6 +80,7 @@ public class RespostasMultiplicação: MonoBehaviour
             r1ok = true;
             Q1mul = 1;
             questoesCertas.Add(r1ok);
+            certo.Play();
         }
     }
 
@@ -94,12 +96,14 @@ public class RespostasMultiplicação: MonoBehaviour
             r2ok = true;
             Q2mul = 1;
             questoesCertas.Add(r2ok);
+            certo.Play();
         }
         else
         {
             r2text.text = "Acredito que não seja isso...";
             r2.enabled = true;
             q2.enabled = false;
+            errado.Play();
         }
     }
 
@@ -115,12 +119,14 @@ public class RespostasMultiplicação: MonoBehaviour
             r3ok = true;
             Q3mul = 1;
             questoesCertas.Add(r3ok);
+            certo.Play();
         }
         else
         {
             r3text.text = "Esse valor não está certo.";
             r3.enabled = true;
             q3.enabled = false;
+            errado.Play();
         }
 
     }
@@ -137,12 +143,14 @@ public class RespostasMultiplicação: MonoBehaviour
             r4ok = true;
             Q4mul = 1;
             questoesCertas.Add(r4ok);
+            certo.Play();
         }
         else
         {
             r4text.text = "Desse jeito não vai ficar bom...";
             r4.enabled = true;
             q4.enabled = false;
+            errado.Play();
         }
 
     }
@@ -171,14 +179,15 @@ public class RespostasMultiplicação: MonoBehaviour
             r5ok = true;
             Q5mul = 1;
             questoesCertas.Add(r5ok);
+            certo.Play();
         }
     }
 
     public void R6()
     {
-        if (res4.text == "300" || PlayerPrefs.GetInt("Q6_mul") == 1)
+        if (res6.text == "300" || PlayerPrefs.GetInt("Q6_mul") == 1)
         {
-            r4text.text = "Isso mesmo!";
+            r6text.text = "Isso mesmo!";
             if (PlayerPrefs.GetInt("Q6_mul") != 1) { r6.enabled = true; }
             npc6_animator.SetBool("NPC3_right", true);
             q6.gameObject.SetActive(false);
@@ -186,12 +195,14 @@ public class RespostasMultiplicação: MonoBehaviour
             r6ok = true;
             Q6mul = 1;
             questoesCertas.Add(r6ok);
+            certo.Play();
         }
         else
         {
             r6text.text = "Acho que não.";
             r6.enabled = true;
             q6.enabled = false;
+            errado.Play();
         }
 
     }

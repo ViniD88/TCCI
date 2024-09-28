@@ -9,6 +9,7 @@ public class Door : MonoBehaviour {
     public RespostasSubtração respostasSubtração;
     public RespostasMultiplicação respostasMultiplicação;
     public RespostasDivisão respostasDivisão;
+    public UI ui;
 
     void Start () {
 		anim = GetComponent<Animator> ();
@@ -16,6 +17,7 @@ public class Door : MonoBehaviour {
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
         respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
         respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        ui = GameObject.FindObjectOfType<UI>();
         AdOK = false;
         SubOK = false;
         MultOK = false;
@@ -89,23 +91,23 @@ public class Door : MonoBehaviour {
     }
 
     void Update () {
-		if (respostasAdição.questoesCertas.Count == 5)
+		if (respostasAdição.questoesCertas.Count == ui.totalDesafios)
         {
 			AdOK = true;
         }
 
-        if (respostasSubtração.questoesCertas.Count == 5)
+        if (respostasSubtração.questoesCertas.Count == ui.totalDesafios)
         {
             SubOK = true;
         }
 
 
-        if (respostasMultiplicação.questoesCertas.Count == 5)
+        if (respostasMultiplicação.questoesCertas.Count == ui.totalDesafios)
         {
             MultOK = true;
         }
 
-        if (respostasDivisão.questoesCertas.Count == 5)
+        if (respostasDivisão.questoesCertas.Count == ui.totalDesafios)
         {
             DivOK = true;
         }

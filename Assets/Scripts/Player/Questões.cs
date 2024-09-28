@@ -85,6 +85,7 @@ public class Questões: MonoBehaviour
 
             if (npc6 == true)
             {
+                r6text.text = "";
                 Q6.enabled = !Q6.enabled;
             }
 

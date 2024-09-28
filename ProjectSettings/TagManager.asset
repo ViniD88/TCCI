@@ -51,6 +51,7 @@ TagManager:
   - NPC6
   - NPC6_Sub
   - NPC6_Mult
+  - NPC6_Div
   layers:
   - Default
   - TransparentFX

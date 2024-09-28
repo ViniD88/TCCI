@@ -18,6 +18,7 @@ public class RespostasSubtração: MonoBehaviour
     public GameObject NPC2;
     public Rigidbody npc2Rb;
     public int Q1sub, Q2sub, Q3sub, Q4sub, Q5sub, Q6sub;
+    public AudioSource certo, errado;
 
     void Start()
     {
@@ -78,12 +79,14 @@ public class RespostasSubtração: MonoBehaviour
             r1ok = true;
             Q1sub = 1;
             questoesCertas.Add(r1ok);
+            certo.Play();
         }
         else
         {
             r1text.text = "Ué, achei que fosse outro número.";
             r1.enabled = true;
             q1.enabled = false;
+            errado.Play();
         }
     }
 
@@ -98,12 +101,14 @@ public class RespostasSubtração: MonoBehaviour
             r2ok = true;
             Q2sub = 1;
             questoesCertas.Add(r2ok);
+            certo.Play();
         }
         else
         {
             r2text.text =  "Uhmm...acho que não eim...";
             r2.enabled = true;
             q2.enabled = false;
+            errado.Play();
         }
     }
 
@@ -119,12 +124,14 @@ public class RespostasSubtração: MonoBehaviour
             r3ok = true;
             Q3sub = 1;
             questoesCertas.Add(r3ok);
+            certo.Play();
         }
         else
         {
             r3text.text = "Será? Não acho que seja essa quantia";
             r3.enabled = true;
             q3.enabled = false;
+            errado.Play();
         }
     }
 
@@ -153,6 +160,7 @@ public class RespostasSubtração: MonoBehaviour
             r4ok = true;
             Q4sub = 1;
             questoesCertas.Add(r4ok);
+            certo.Play();
         }
 
     }
@@ -169,12 +177,14 @@ public class RespostasSubtração: MonoBehaviour
             r5ok = true;
             Q5sub = 1;
             questoesCertas.Add(r5ok);
+            certo.Play();
         }
         else
         {
             r5text.text = "Acho que não. Desse jeito ela vai brigar comigo.";
             r5.enabled = true;
             q5.enabled = false;
+            errado.Play();
         }
     }
 
@@ -190,12 +200,14 @@ public class RespostasSubtração: MonoBehaviour
             r6ok = true;
             Q6sub = 1;
             questoesCertas.Add(r6ok);
+            certo.Play();
         }
         else
         {
             r6text.text = "Não é isso não...";
             r6.enabled = true;
             q6.enabled = false;
+            errado.Play();
         }
     }
 

@@ -15,7 +15,7 @@ public class Buttons : MonoBehaviour
     public Transição transição;
     public PauseMenu pauseMenu;
     public GameObject Player;
-
+    
     public void fechar_click()
     {
          // Desativa o Canvas
@@ -24,42 +24,62 @@ public class Buttons : MonoBehaviour
     }
 
     public void iniciar() {
-        transição = GameObject.FindObjectOfType<Transição>();
-        transição.TransitionToScene("Game");
+
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetFloat("X", 594.25f);
         PlayerPrefs.SetFloat("Y", 5.036f);
         PlayerPrefs.SetFloat("Z", 321.36f);
+        transição = GameObject.FindObjectOfType<Transição>();
+        transição.TransitionToScene("Game");
+        click.Play();
     }
 
     public void carregar()
     {
-        transição = GameObject.FindObjectOfType<Transição>();
-        transição.TransitionToScene("Game");
+        click.Play();
+        if (PlayerPrefs.GetInt("jogoSalvo")==1) {
+            transição = GameObject.FindObjectOfType<Transição>();
+            transição.TransitionToScene("Game");
+        }
+        else
+        {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetFloat("X", 594.25f);
+            PlayerPrefs.SetFloat("Y", 5.036f);
+            PlayerPrefs.SetFloat("Z", 321.36f);
+            transição = GameObject.FindObjectOfType<Transição>();
+            transição.TransitionToScene("Game");
+        }
+
     }
 
     public void controles()
     {
+        click.Play();
         transição = GameObject.FindObjectOfType<Transição>();
         transição.TransitionToScene("Controles");
     }
 
     public void vamosLá()
     {
+        click.Play();
         transição = GameObject.FindObjectOfType<Transição>();
         transição.TransitionToScene("MenuInicial");
     }
 
     public void sair()
     {
+        click.Play();
         Application.Quit();
     }
 
     public void salvar()
     {
+        click.Play();
         PlayerPrefs.SetFloat("X", Player.transform.position.x);
         PlayerPrefs.SetFloat("Y", Player.transform.position.y);
         PlayerPrefs.SetFloat("Z", Player.transform.position.z);
+        PlayerPrefs.SetInt("jogoSalvo", 1);
 
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
@@ -95,11 +115,14 @@ public class Buttons : MonoBehaviour
         PlayerPrefs.SetInt("Q6_div", respostasDivisão.Q6div);
 
         PlayerPrefs.Save();
+        Debug.Log("Jogo Salvo");
+        
 
     }
 
     public void continuar()
     {
+        click.Play();
         transição = GameObject.FindObjectOfType<Transição>();
         transição.TransitionToScene("Créditos");
     }
@@ -107,6 +130,7 @@ public class Buttons : MonoBehaviour
     // verificar adição
     public void verificarR2_click()
     {
+
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
         respostasAdição.R2();
     }

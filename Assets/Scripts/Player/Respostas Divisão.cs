@@ -16,6 +16,7 @@ public class RespostasDivisão: MonoBehaviour
     private bool r1ok, r2ok, r3ok, r4ok, r5ok, r6ok;
     public List<bool> questoesCertas;
     public int Q1div, Q2div, Q3div, Q4div, Q5div, Q6div;
+    public AudioSource certo, errado;
 
     void Start()
     {
@@ -75,12 +76,14 @@ public class RespostasDivisão: MonoBehaviour
             r1ok = true;
             Q1div = 1;
             questoesCertas.Add(r1ok);
+            certo.Play();
         }
         else
         {
             r1text.text = "Desse jeito meu chefe não vai gostar.";
             r1.enabled = true;
             q1.enabled = false;
+            errado.Play();
         }
     }
 
@@ -96,12 +99,14 @@ public class RespostasDivisão: MonoBehaviour
             r2ok = true;
             Q2div = 1;
             questoesCertas.Add(r2ok);
+            certo.Play();
         }
         else
         {
             r2text.text = "Acredito que não seja esse valor.";
             r2.enabled = true;
             q2.enabled = false;
+            errado.Play();
         }
     }
 
@@ -116,12 +121,14 @@ public class RespostasDivisão: MonoBehaviour
             r3ok = true;
             Q3div = 1;
             questoesCertas.Add(r3ok);
+            certo.Play();
         }
         else
         {
             r3text.text = "Tem certeza? Acho que não.";
             r3.enabled = true;
             q3.enabled = false;
+            errado.Play();
         }
     }
 
@@ -171,6 +178,7 @@ public class RespostasDivisão: MonoBehaviour
             r4ok = true;
             Q4div = 1;
             questoesCertas.Add(r4ok);
+            certo.Play();
         }
 
     }
@@ -188,12 +196,14 @@ public class RespostasDivisão: MonoBehaviour
             Q5div = 1;
             questoesCertas.Add(r5ok);
             moinho.speed = 0.25f;
+            certo.Play();
         }
         else
         {
             r5text.text = "Tem certeza? Acho que não.";
             r5.enabled = true;
             q5.enabled = false;
+            errado.Play();
         }
     }
 
@@ -209,12 +219,14 @@ public class RespostasDivisão: MonoBehaviour
             r6ok = true;
             Q6div = 1;
             questoesCertas.Add(r6ok);
+            certo.Play();
         }
         else
         {
             r6text.text = "Não está correto.";
             r6.enabled = true;
             q6.enabled = false;
+            errado.Play();
         }
     }
 

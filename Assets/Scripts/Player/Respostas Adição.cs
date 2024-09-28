@@ -16,6 +16,7 @@ public class RespostasAdição : MonoBehaviour
     public bool r1ok, r2ok, r3ok, r4ok, r5ok, r6ok;
     public List<bool> questoesCertas;
     public int Q1ad, Q2ad, Q3ad, Q4ad, Q5ad, Q6ad;
+    public AudioSource certo, errado;
 
     void Start()
     {
@@ -78,6 +79,7 @@ public class RespostasAdição : MonoBehaviour
             r1ok = true;
             Q1ad = 1;
             questoesCertas.Add(r1ok);
+            certo.Play();
 
         }
 
@@ -93,12 +95,14 @@ public class RespostasAdição : MonoBehaviour
             r2ok = true;
             Q2ad = 1;
             questoesCertas.Add(r2ok);
+            certo.Play();
         }
         else
         {
             r2text.text =  "Uhmm...acho que não é esse valor";
             q2.enabled = false;
             r2.enabled = true;
+            errado.Play();
         }
     }
 
@@ -113,12 +117,14 @@ public class RespostasAdição : MonoBehaviour
             r3ok = true;
             Q3ad = 1;
             questoesCertas.Add(r3ok);
+            certo.Play();
         }
         else
         {
             r3text.text = "Tem certeza? Me parece que não é essa quantidade...";
             r3.enabled = true;
             q3.enabled = false;
+            errado.Play();
 
         }
 
@@ -136,12 +142,14 @@ public class RespostasAdição : MonoBehaviour
             r4ok = true;
             Q4ad = 1;
             questoesCertas.Add(r4ok);
+            certo.Play();
         }
         else
         {
             r4text.text = "Não está certo...";
             r4.enabled = true;
             q4.enabled = false;
+            errado.Play();
 
         }
 
@@ -172,6 +180,7 @@ public class RespostasAdição : MonoBehaviour
             r5ok = true;
             Q5ad = 1;
             questoesCertas.Add(r5ok);
+            certo.Play();
         }
 
     }
@@ -187,12 +196,14 @@ public class RespostasAdição : MonoBehaviour
             r6ok = true;
             Q6ad = 1;
             questoesCertas.Add(r6ok);
+            certo.Play();
         }
         else
         {
             r6text.text = "Ai, ai, ai, desse jeito não vou dormir!";
             r6.enabled = true;
             q6.enabled = false;
+            errado.Play();
 
         }
 

@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
     public RespostasDivisão respostasDivisão;
     public TMP_Text concluídas, vila, operação, desafios, total;
     public bool vila_ad, vila_sub, vila_mult, vila_div;
+    public int totalDesafios;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class UI : MonoBehaviour
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>();
         respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>();
         respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        totalDesafios = 6;
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class UI : MonoBehaviour
             vila.text = "VILA SOMA";
             operação.text = "ADIÇÃO";
             desafios.text = "Desafios Concluídos";
-            total.text = "/ 5";
+            total.text = "/ " + totalDesafios.ToString();
 
         }
 
@@ -38,7 +40,7 @@ public class UI : MonoBehaviour
             vila.text = "VILA MENOS";
             operação.text = "SUBTRAÇÃO";
             desafios.text = "Desafios Concluídos";
-            total.text = "/ 5";
+            total.text = "/ " + totalDesafios.ToString();
         }
         
         if (vila_mult) { 
@@ -46,7 +48,7 @@ public class UI : MonoBehaviour
             vila.text = "VILA VEZES";
             operação.text = "MULTIPLICAÇÃO";
             desafios.text = "Desafios Concluídos";
-            total.text = "/ 5";
+            total.text = "/ " + totalDesafios.ToString();
         }
         
         if (vila_div) {
@@ -54,13 +56,13 @@ public class UI : MonoBehaviour
             vila.text = "VILA REPARTIR";
             operação.text = "DIVISÃO";
             desafios.text = "Desafios Concluídos";
-            total.text = "/ 5";
+            total.text = "/ "+ totalDesafios.ToString();
         }
 
         if(!vila_ad && !vila_sub && !vila_mult && !vila_div ){
             concluídas.text = "";
             vila.text = "MATEMATICALÂNDIA";
-            operação.text = "+ - X /";
+            operação.text = "+ - X ÷";
             desafios.text = "";
             total.text = "";
         }

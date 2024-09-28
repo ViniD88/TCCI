@@ -9,6 +9,7 @@ public class Vitória : MonoBehaviour
     public RespostasSubtração respostasSubtração;
     public RespostasMultiplicação respostasMultiplicação;
     public RespostasDivisão respostasDivisão;
+    public UI ui;
     public bool vitoria;
     public Transição transição;
     // Start is called before the first frame update
@@ -17,13 +18,15 @@ public class Vitória : MonoBehaviour
         respostasAdição = GameObject.FindObjectOfType<RespostasAdição>();
         respostasSubtração = GameObject.FindObjectOfType<RespostasSubtração>(); 
         respostasMultiplicação = GameObject.FindObjectOfType<RespostasMultiplicação>(); 
-        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>(); 
-}
+        respostasDivisão = GameObject.FindObjectOfType<RespostasDivisão>();
+        ui = GameObject.FindObjectOfType<UI>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(respostasAdição.questoesCertas.Count == 5 && respostasSubtração.questoesCertas.Count == 5 && respostasMultiplicação.questoesCertas.Count == 5 && respostasDivisão.questoesCertas.Count == 5){
+        if(respostasAdição.questoesCertas.Count == ui.totalDesafios && respostasSubtração.questoesCertas.Count == ui.totalDesafios && respostasMultiplicação.questoesCertas.Count == ui.totalDesafios && respostasDivisão.questoesCertas.Count == ui.totalDesafios)
+        {
             vitoria = true;
         }
     }
